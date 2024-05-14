@@ -17,6 +17,7 @@ export type TMovie = {
   year: number;
   genres: string[];
   description: string;
+  sinopsis: string;
   priceInCents: number;
   trailer: string;
 };

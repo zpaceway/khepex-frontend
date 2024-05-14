@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useMovies } from "./hooks";
 import { useEffect } from "react";
-import LoadingPage from "./pages/LoadingPage";
+import LoadingScreen from "./components/LoadingScreen";
 
 const unprotectedRoutes = ["/auth"];
 
@@ -17,7 +17,7 @@ const App = () => {
   }, [user, location.pathname, navigate]);
 
   if (!user && !unprotectedRoutes.includes(location.pathname)) {
-    return <LoadingPage />;
+    return <LoadingScreen />;
   }
 
   return <Outlet />;

@@ -4,6 +4,8 @@ import App from "./App";
 import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
 import MoviePlayerPage from "./pages/MoviePlayerPage";
+import MovieInfoPage from "./pages/MovieInfoPage";
+import MovieShoppingPage from "./pages/MovieShoppingPage";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,16 @@ const router = createBrowserRouter([
         element: <AuthPage />,
       },
       {
+        path: "movie/:movieId",
+        element: <MovieInfoPage />,
+      },
+      {
         path: "play/:movieId",
         element: <MoviePlayerPage />,
+      },
+      {
+        path: "shop/:movieId",
+        element: <MovieShoppingPage />,
       },
     ],
   },

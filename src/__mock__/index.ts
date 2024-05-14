@@ -24,6 +24,8 @@ export const movies: TMovie[] = [
     genres: ["Drama"],
     description:
       "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    sinopsis:
+      "Wrongly accused of murder, banker Andy Dufresne is sent to Shawshank prison. Over the years, he forms an unlikely friendship with fellow inmate Red, and together they experience the harsh realities of prison life. Andy never loses hope of proving his innocence and dreams of freedom, demonstrating remarkable resilience and the enduring power of the human spirit.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=6hB3S9bIaco",
   },
@@ -39,6 +41,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama"],
     description:
       "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    sinopsis:
+      "The powerful saga of the Corleone crime family, spanning generations. Vito Corleone, the patriarch, balances family loyalty with ruthless violence, building an empire. As he ages, his son Michael reluctantly steps into the role, transforming from a war hero into a cunning mafia boss, entangled in a web of betrayal, ambition, and power struggles that define their legacy.",
     priceInCents: 1399,
     trailer: "https://www.youtube.com/watch?v=sY1S34973zA",
   },
@@ -54,6 +58,8 @@ export const movies: TMovie[] = [
     genres: ["Action", "Crime", "Drama"],
     description:
       "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    sinopsis:
+      "In Gotham City, Batman faces his greatest psychological and physical challenge as he battles the Joker, a criminal mastermind who unleashes chaos on the city. With the stakes higher than ever, Batman, Commissioner Gordon, and District Attorney Harvey Dent must confront their own morals and limits in this dark tale of justice, heroism, and sacrifice.",
     priceInCents: 1199,
     trailer: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   },
@@ -69,6 +75,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama"],
     description:
       "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    sinopsis:
+      "An anthology of interwoven stories revolving around crime and redemption. Vincent and Jules, two hitmen, face a series of moral dilemmas and violent encounters. Meanwhile, boxer Butch Coolidge attempts to escape the wrath of mob boss Marsellus Wallace. The film's nonlinear narrative and eclectic characters paint a vivid picture of the underworld and its complexities.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
   },
@@ -84,6 +92,8 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Romance"],
     description:
       "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.",
+    sinopsis:
+      "Forrest Gump, a man with a low IQ but a heart of gold, experiences pivotal moments in American history firsthand. From the Vietnam War to historic presidencies, his innocence and optimism touch everyone he meets. Alongside his love for childhood friend Jenny, Forrest's journey is a testament to the power of determination and kindness.",
     priceInCents: 1199,
     trailer: "https://www.youtube.com/watch?v=bLvqoHBptjg",
   },
@@ -99,6 +109,8 @@ export const movies: TMovie[] = [
     genres: ["Action", "Adventure", "Sci-Fi"],
     description:
       "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    sinopsis:
+      "Dom Cobb, a skilled thief, uses dream-sharing technology to extract secrets from deep within the subconscious. Hired for a seemingly impossible task of planting an idea rather than stealing one, Cobb and his team navigate layers of dreams within dreams. Their mission tests their resolve, reality, and survival, blurring the line between dreams and reality.",
     priceInCents: 1399,
     trailer: "https://www.youtube.com/watch?v=YoHD9XEInc0",
   },
@@ -114,6 +126,8 @@ export const movies: TMovie[] = [
     genres: ["Drama"],
     description:
       "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+    sinopsis:
+      "Discontent with his white-collar job, an unnamed narrator forms an underground fight club with the charismatic Tyler Durden. As the club evolves into a chaotic anarchist group, the narrator's life spirals out of control. The film explores themes of identity, consumerism, and the search for meaning in the modern world.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=SUXWAEX2jlg",
   },
@@ -129,6 +143,8 @@ export const movies: TMovie[] = [
     genres: ["Action", "Sci-Fi"],
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    sinopsis:
+      "Thomas Anderson, a computer programmer, discovers the world he knows is a simulated reality called the Matrix. Guided by Morpheus and Trinity, he learns to harness his abilities and fights against the oppressive machines controlling humanity. The film delves into themes of reality, freedom, and self-discovery, redefining action cinema.",
     priceInCents: 1199,
     trailer: "https://www.youtube.com/watch?v=vKQi3bBA1y8",
   },
@@ -144,6 +160,8 @@ export const movies: TMovie[] = [
     genres: ["Biography", "Crime", "Drama"],
     description:
       "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
+    sinopsis:
+      "Henry Hill, a half-Irish, half-Sicilian New Yorker, rises through the ranks of the mob. With friends Jimmy Conway and Tommy DeVito, he engages in a life of crime, betrayal, and violence. The film chronicles his criminal career, personal struggles, and ultimate decision to turn informant, providing a gritty look at the underworld.",
     priceInCents: 1399,
     trailer: "https://www.youtube.com/watch?v=2ilzidi_J8Q",
   },
@@ -159,6 +177,8 @@ export const movies: TMovie[] = [
     genres: ["Adventure", "Drama", "Fantasy"],
     description:
       "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    sinopsis:
+      "The final chapter in the epic saga sees Middle-earth's last stand against the dark forces of Sauron. As Frodo and Sam edge closer to Mount Doom to destroy the One Ring, Aragorn leads the forces of men in a desperate battle to distract Sauron. The film's grand scale and emotional depth culminate in a poignant and thrilling conclusion to the trilogy.",
     priceInCents: 1499,
     trailer: "https://www.youtube.com/watch?v=r5X-hFf6Bwo",
   },
@@ -174,6 +194,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Thriller"],
     description:
       "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to catch another serial killer, a madman who skins his victims.",
+    sinopsis:
+      "Clarice Starling, a young F.B.I. cadet, seeks the help of imprisoned cannibalistic serial killer Dr. Hannibal Lecter to catch another killer on the loose. The twisted relationship between Clarice and Lecter forms the crux of this chilling thriller, exploring themes of power, manipulation, and psychological warfare.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=RuX2MQeb8UM",
   },
@@ -189,6 +211,8 @@ export const movies: TMovie[] = [
     genres: ["Biography", "Drama", "History"],
     description:
       "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    sinopsis:
+      "Oskar Schindler, a German businessman, saves the lives of over a thousand Jewish refugees during the Holocaust by employing them in his factories. Witnessing the horrors of the Nazi regime, Schindler transforms from a profit-seeking opportunist to a humanitarian, risking his life to protect his workers from extermination.",
     priceInCents: 1499,
     trailer: "https://www.youtube.com/watch?v=gG22XNhtnoY",
   },
@@ -204,6 +228,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Fantasy"],
     description:
       "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+    sinopsis:
+      "Paul Edgecomb, a death row corrections officer, recounts the extraordinary story of John Coffey, an inmate with miraculous healing powers. As Paul and his fellow guards witness Coffey's abilities, they grapple with the moral complexities of their duty. The film explores themes of compassion, justice, and the supernatural.",
     priceInCents: 1399,
     trailer: "https://www.youtube.com/watch?v=Ki4haFrqSrw",
   },
@@ -219,6 +245,8 @@ export const movies: TMovie[] = [
     genres: ["Adventure", "Drama", "Sci-Fi"],
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    sinopsis:
+      "In a future where Earth is becoming uninhabitable, former pilot Cooper leads a team of astronauts on a daring mission through a wormhole to find a new home for humanity. As they navigate the unknown dimensions of space and time, they face immense challenges and emotional trials, highlighting the resilience of the human spirit.",
     priceInCents: 1499,
     trailer: "https://www.youtube.com/watch?v=zSWdZVtXT7E",
   },
@@ -234,6 +262,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Mystery"],
     description:
       "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
+    sinopsis:
+      "Following a massacre and explosion on a boat, the police interrogate Verbal Kint, a small-time con man, to unravel the complex sequence of events. As Verbal recounts the story of five criminals and their fateful encounter with the enigmatic Keyser Söze, the line between truth and deception blurs in this intricate mystery.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=oiXdPolca5w",
   },
@@ -249,6 +279,8 @@ export const movies: TMovie[] = [
     genres: ["Animation", "Adventure", "Drama"],
     description:
       "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    sinopsis:
+      "Simba, a young lion prince, is born into the royal family of the Pride Lands. Tragedy strikes when his father, Mufasa, is murdered by his jealous uncle Scar. Forced into exile, Simba grows up with carefree friends Timon and Pumbaa, but must eventually confront his past and reclaim his rightful place as king.",
     priceInCents: 1199,
     trailer: "https://www.youtube.com/watch?v=4sj1MT05lAA",
   },
@@ -264,6 +296,8 @@ export const movies: TMovie[] = [
     genres: ["Action", "Adventure", "Drama"],
     description:
       "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    sinopsis:
+      "Maximus Decimus Meridius, a betrayed Roman general, is reduced to slavery and forced to become a gladiator. Rising through the ranks of the arena, he seeks vengeance against Emperor Commodus, who murdered his family. Maximus's journey is one of courage, resilience, and a fight for justice in the face of overwhelming odds.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=owK1qxDselE",
   },
@@ -279,6 +313,8 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Mystery", "Sci-Fi"],
     description:
       "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    sinopsis:
+      "Robert Angier and Alfred Borden, two rival magicians in 19th century London, are locked in a bitter feud after a tragic accident. Their competition to create the ultimate illusion escalates into a deadly game of obsession and deceit, revealing the sacrifices they are willing to make for their craft.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=o4gHCmTQDVI",
   },
@@ -294,6 +330,8 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Thriller"],
     description:
       "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    sinopsis:
+      "Billy Costigan, an undercover cop, and Colin Sullivan, a mole within the police force, are embroiled in a deadly cat-and-mouse game. As they each try to uncover the other's identity, the tension escalates within the criminal underworld and the police department, leading to a climactic confrontation.",
     priceInCents: 1399,
     trailer: "https://www.youtube.com/watch?v=iojhqm0JTW4",
   },
@@ -309,6 +347,8 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Music"],
     description:
       "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
+    sinopsis:
+      "Andrew Neiman, an ambitious young drummer, enrolls at a prestigious music conservatory. Under the tutelage of the ruthless and abusive instructor Terence Fletcher, Andrew pushes himself to the limit to achieve greatness. The intense relationship between mentor and student raises questions about the cost of artistic success and personal sacrifice.",
     priceInCents: 1299,
     trailer: "https://www.youtube.com/watch?v=7d_jQycdQGo",
   },

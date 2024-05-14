@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 
-import LoadingPage from "./LoadingPage";
+import LoadingScreen from "../components/LoadingScreen";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Debouncer } from "../utils";
 import { twMerge } from "tailwind-merge";
@@ -60,7 +60,7 @@ const DashboardPage = () => {
     });
   }, [refreshLolomo, search]);
 
-  if (!lolomo || !user) return <LoadingPage />;
+  if (!lolomo || !user) return <LoadingScreen />;
 
   return (
     <div ref={appContainerRef} className="flex flex-col gap-8 bg-zinc-900">
@@ -94,9 +94,9 @@ const DashboardPage = () => {
                   )}
                   onClick={() => {
                     if (user.purchasedMovieIds.includes(bannerMovie.id)) {
-                      console.log("here");
-                      navigate(`/play/${bannerMovie.id}`);
+                      return navigate(`/play/${bannerMovie.id}`);
                     }
+                    navigate(`/shop/${bannerMovie.id}`);
                   }}
                 >
                   <div className="flex items-center gap-1">
@@ -113,7 +113,12 @@ const DashboardPage = () => {
                     </div>
                   </div>
                 </button>
-                <button className="gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-zinc-500 hover:bg-opacity-80">
+                <button
+                  className="gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-zinc-500 hover:bg-opacity-80"
+                  onClick={() => {
+                    navigate(`/movie/${bannerMovie.id}`);
+                  }}
+                >
                   <FaInfoCircle />
                   <div>More Info</div>
                 </button>

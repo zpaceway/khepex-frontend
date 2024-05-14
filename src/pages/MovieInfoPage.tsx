@@ -2,9 +2,8 @@ import { useParams } from "react-router-dom";
 import { useMovies } from "../hooks";
 import { useMemo } from "react";
 import LoadingScreen from "../components/LoadingScreen";
-import ReactPlayer from "react-player";
 
-const MoviePlayerPage = () => {
+const MoviePage = () => {
   const { movies } = useMovies();
   const params = useParams<{ movieId: string }>();
 
@@ -16,16 +15,7 @@ const MoviePlayerPage = () => {
 
   if (!movie) return <LoadingScreen />;
 
-  return (
-    <div className="fixed inset-0 bg-zinc-900">
-      <ReactPlayer
-        className="h-full w-full"
-        width={"100%"}
-        height={"100%"}
-        url={movie?.trailer}
-      />
-    </div>
-  );
+  return <div>info from {movie.title}</div>;
 };
 
-export default MoviePlayerPage;
+export default MoviePage;

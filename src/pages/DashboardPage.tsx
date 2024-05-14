@@ -14,11 +14,11 @@ const DashboardPage = () => {
       <div className="fixed top-0 z-50 flex h-16 w-full shrink-0 items-center bg-gradient-to-b from-zinc-900 to-[#00000030] px-4 backdrop-blur-sm lg:px-8">
         <div className="text-3xl font-black text-purple-400">
           <span>KHE</span>
-          <span className="text-lg font-medium italic text-white">pex</span>
+          <span className="text-lg font-medium text-white">pex</span>
         </div>
       </div>
       <div className="relative h-full max-h-[max(100vh,600px)] min-h-[max(100vh,600px)] w-full bg-white">
-        <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-black bg-opacity-20 p-8 text-white">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-black bg-opacity-20 px-4 text-white lg:px-8">
           <div className="max-w-[400px] text-4xl font-bold">
             {movies[0].name}
           </div>

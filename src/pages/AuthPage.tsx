@@ -110,7 +110,7 @@ const AuthPage = () => {
           Welcome to{" "}
           <span className="text-3xl font-black text-purple-400">
             <span>KHE</span>
-            <span className="text-lg font-medium italic text-white">pex</span>
+            <span className="text-lg font-medium text-white">pex</span>
           </span>
         </h1>
         <div className="z-10 flex flex-col gap-2">

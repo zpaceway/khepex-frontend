@@ -158,10 +158,12 @@ const DashboardPage = () => {
                   </div>
                   <div className="mx-4 flex gap-4 overflow-x-auto py-4">
                     {movies.map((movie) => (
-                      <div className="flex w-40 shrink-0 flex-col gap-1 overflow-hidden text-white">
+                      <div
+                        key={`movie-${category}-${movie.id}`}
+                        className="flex w-40 shrink-0 flex-col gap-1 overflow-hidden text-white"
+                      >
                         <div className="h-60 w-40 overflow-hidden">
                           <MovieCard
-                            key={`movie-${category}-${movie.id}`}
                             movie={{
                               ...movie,
                               genres: category ? [category] : movie.genres,

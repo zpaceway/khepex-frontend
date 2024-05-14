@@ -2,12 +2,13 @@ export type TUser = {
   id: string;
   name: string;
   email: string;
+  picture?: string;
   purchasedMovieIds: string[];
 };
 
 export type TMovie = {
   id: string;
-  name: string;
+  title: string;
   banner: string;
   cover: string;
   ratings: number;

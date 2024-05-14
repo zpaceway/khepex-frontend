@@ -5,6 +5,7 @@ export const users: (TUser & { password: string })[] = [
     id: "1",
     email: "test@test.com",
     name: "Alexandro Tapia",
+    picture: "/users/test@test.com/picture.png",
     password: "123456",
     purchasedMovieIds: ["1", "4", "3", "10", "13", "16", "20", "5", "2", "7"],
   },
@@ -12,7 +13,7 @@ export const users: (TUser & { password: string })[] = [
 export const movies: TMovie[] = [
   {
     id: "1",
-    name: "The Shawshank Redemption",
+    title: "The Shawshank Redemption",
     banner: "/movies/The Shawshank Redemption/banner.jpg",
     cover: "/movies/The Shawshank Redemption/cover.jpg",
     ratings: 9.3,
@@ -26,7 +27,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "2",
-    name: "The Godfather",
+    title: "The Godfather",
     banner: "/movies/The Godfather/banner.jpg",
     cover: "/movies/The Godfather/cover.jpg",
     ratings: 9.2,
@@ -40,7 +41,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "3",
-    name: "The Dark Knight",
+    title: "The Dark Knight",
     banner: "/movies/The Dark Knight/banner.jpg",
     cover: "/movies/The Dark Knight/cover.jpg",
     ratings: 9.0,
@@ -54,7 +55,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "4",
-    name: "Pulp Fiction",
+    title: "Pulp Fiction",
     banner: "/movies/Pulp Fiction/banner.jpg",
     cover: "/movies/Pulp Fiction/cover.jpg",
     ratings: 8.9,
@@ -68,7 +69,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "5",
-    name: "Forrest Gump",
+    title: "Forrest Gump",
     banner: "/movies/Forrest Gump/banner.jpg",
     cover: "/movies/Forrest Gump/cover.jpg",
     ratings: 8.8,
@@ -82,7 +83,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "6",
-    name: "Inception",
+    title: "Inception",
     banner: "/movies/Inception/banner.jpg",
     cover: "/movies/Inception/cover.jpg",
     ratings: 8.8,
@@ -96,7 +97,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "7",
-    name: "Fight Club",
+    title: "Fight Club",
     banner: "/movies/Fight Club/banner.jpg",
     cover: "/movies/Fight Club/cover.jpg",
     ratings: 8.8,
@@ -110,7 +111,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "8",
-    name: "The Matrix",
+    title: "The Matrix",
     banner: "/movies/The Matrix/banner.jpg",
     cover: "/movies/The Matrix/cover.jpg",
     ratings: 8.7,
@@ -124,7 +125,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "9",
-    name: "Goodfellas",
+    title: "Goodfellas",
     banner: "/movies/Goodfellas/banner.jpg",
     cover: "/movies/Goodfellas/cover.jpg",
     ratings: 8.7,
@@ -138,7 +139,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "10",
-    name: "The Lord of the Rings: The Return of the King",
+    title: "The Lord of the Rings: The Return of the King",
     banner: "/movies/The Lord of the Rings: The Return of the King/banner.jpg",
     cover: "/movies/The Lord of the Rings: The Return of the King/cover.jpg",
     ratings: 8.9,
@@ -152,7 +153,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "11",
-    name: "The Silence of the Lambs",
+    title: "The Silence of the Lambs",
     banner: "/movies/The Silence of the Lambs/banner.jpg",
     cover: "/movies/The Silence of the Lambs/cover.jpg",
     ratings: 8.6,
@@ -166,7 +167,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "12",
-    name: "Schindler's List",
+    title: "Schindler's List",
     banner: "/movies/Schindler's List/banner.jpg",
     cover: "/movies/Schindler's List/cover.jpg",
     ratings: 8.9,
@@ -180,7 +181,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "13",
-    name: "The Green Mile",
+    title: "The Green Mile",
     banner: "/movies/The Green Mile/banner.jpg",
     cover: "/movies/The Green Mile/cover.jpg",
     ratings: 8.6,
@@ -194,7 +195,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "14",
-    name: "Interstellar",
+    title: "Interstellar",
     banner: "/movies/Interstellar/banner.jpg",
     cover: "/movies/Interstellar/cover.jpg",
     ratings: 8.6,
@@ -208,7 +209,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "15",
-    name: "The Usual Suspects",
+    title: "The Usual Suspects",
     banner: "/movies/The Usual Suspects/banner.jpg",
     cover: "/movies/The Usual Suspects/cover.jpg",
     ratings: 8.5,
@@ -222,7 +223,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "16",
-    name: "The Lion King",
+    title: "The Lion King",
     banner: "/movies/The Lion King/banner.jpg",
     cover: "/movies/The Lion King/cover.jpg",
     ratings: 8.5,
@@ -236,7 +237,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "17",
-    name: "Gladiator",
+    title: "Gladiator",
     banner: "/movies/Gladiator/banner.jpg",
     cover: "/movies/Gladiator/cover.jpg",
     ratings: 8.5,
@@ -250,7 +251,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "18",
-    name: "The Prestige",
+    title: "The Prestige",
     banner: "/movies/The Prestige/banner.jpg",
     cover: "/movies/The Prestige/cover.jpg",
     ratings: 8.5,
@@ -264,7 +265,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "19",
-    name: "The Departed",
+    title: "The Departed",
     banner: "/movies/The Departed/banner.jpg",
     cover: "/movies/The Departed/cover.jpg",
     ratings: 8.5,
@@ -278,7 +279,7 @@ export const movies: TMovie[] = [
   },
   {
     id: "20",
-    name: "Whiplash",
+    title: "Whiplash",
     banner: "/movies/Whiplash/banner.jpg",
     cover: "/movies/Whiplash/cover.jpg",
     ratings: 8.5,

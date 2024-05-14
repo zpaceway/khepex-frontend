@@ -1,9 +1,11 @@
 import { movies, users } from "../__mock__";
 import { TMovie, TUser } from "../types";
-import { delay } from "../utils";
+import { delay, shuffleItems } from "../utils";
+
+const MOCKED_BACKEND_TIMEOUT_IN_MS = 200;
 
 export const getCurrentUser = async (): Promise<TUser | null> => {
-  await delay(1000);
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
   const currentUserId = localStorage.getItem("currentUserId");
   if (currentUserId) {
     const user = users.find((user) => user.id === currentUserId);
@@ -12,6 +14,7 @@ export const getCurrentUser = async (): Promise<TUser | null> => {
         id: user.id,
         email: user.email,
         name: user.name,
+        picture: user.picture,
         purchasedMovieIds: user.purchasedMovieIds,
       };
     }
@@ -25,7 +28,7 @@ export const signInWithEmailAndPassword = async (
   email: string,
   password: string,
 ): Promise<TUser | null> => {
-  await delay(1000);
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
   const user = users.find((user) => {
     return user.email === email && user.password === password;
   });
@@ -37,6 +40,7 @@ export const signInWithEmailAndPassword = async (
       id: user.id,
       email: user.email,
       name: user.name,
+      picture: user.picture,
       purchasedMovieIds: user.purchasedMovieIds,
     };
   }
@@ -47,7 +51,7 @@ export const signInWithEmailAndPassword = async (
 export const signUpUser = async (
   user: Omit<TUser & { password: string }, "id">,
 ): Promise<TUser | null> => {
-  await delay(1000);
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
   const userId = crypto.randomUUID() as string;
 
   const userWithSameEmail = users.find((_user) => {
@@ -64,34 +68,68 @@ export const signUpUser = async (
   };
 };
 
-const shuffleItems = <T>(array: T[]) => {
-  let currentIndex = array.length;
+export const getMoviesSortedByRelevance = async () => {
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
+  const moviesSortedByRelevance = [...movies];
 
-  while (currentIndex != 0) {
-    const randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
+  shuffleItems(moviesSortedByRelevance);
+
+  return moviesSortedByRelevance;
 };
 
-export const getMoviesSortedByRelevance = async (
-  filters: Partial<TMovie> = {},
-) => {
-  await delay(1000);
+export const generateLolomoFromMovies = async ({
+  movies,
+  search,
+}: {
+  movies: TMovie[];
+  search?: string;
+}) => {
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
+
   const filteredMovies = movies.filter((movie) => {
-    return Object.entries(filters).every(([key, value]) => {
-      return movie[key as keyof TMovie] === value;
-    });
+    const isMovieOnSearch =
+      !search ||
+      movie.title
+        .replace(/ /g, "")
+        .toLowerCase()
+        .includes(search.replace(/ /g, "").toLowerCase()) ||
+      movie.genres.some((genre) => {
+        return genre
+          .replace(/ /g, "")
+          .toLowerCase()
+          .includes(search.replace(/ /g, "").toLowerCase());
+      });
+
+    return isMovieOnSearch;
   });
 
-  shuffleItems(filteredMovies);
+  const categories = [
+    ...new Set(filteredMovies.map((movie) => movie.genres).flat()),
+  ].sort();
 
-  return filteredMovies;
+  return ["", ...categories].map((category) => {
+    return [
+      category || "For You",
+      filteredMovies.filter((movie) => {
+        const isForYou = !category;
+        if (isForYou) return true;
+        const doesGenreIncludes = movie.genres.includes(category);
+        if (doesGenreIncludes) return true;
+        return false;
+      }),
+    ] as const;
+  });
 };
 
-export const getCategoriesSortedByName = () => {
-  return [...new Set(movies.map((movie) => movie.genres).flat())].sort();
+const methods = {
+  generateLolomoFromMovies,
+};
+
+self.onmessage = async (m) => {
+  if (m.data.source !== "khepex") return;
+
+  const method = methods[m.data.method as keyof typeof methods];
+  const result = await method(m.data.payload);
+
+  self.postMessage({ source: "khepex", result });
 };

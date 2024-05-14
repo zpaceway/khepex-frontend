@@ -1,14 +1,13 @@
 import { useAtom } from "jotai";
-import { categoriesAtom, moviesAtom, userAtom } from "../atoms";
-import { useCallback, useEffect } from "react";
+import { moviesAtom, userAtom } from "../atoms";
+import { useCallback, useEffect, useState } from "react";
 import {
-  getCategoriesSortedByName,
   getCurrentUser,
   getMoviesSortedByRelevance,
   signInWithEmailAndPassword,
   signUpUser,
 } from "../api";
-import { TUser } from "../types";
+import { TMovie, TUser } from "../types";
 
 export const useAuth = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -49,7 +48,41 @@ export const useAuth = () => {
 
 export const useMovies = () => {
   const [movies, setMovies] = useAtom(moviesAtom);
-  const [categories, setCategories] = useAtom(categoriesAtom);
+  const [lolomo, setLolomo] = useState<[string, TMovie[]][] | undefined>();
+
+  const fetchLolomo = useCallback(
+    async (search?: string) => {
+      const url = new URL("../api/index.ts", import.meta.url);
+      const worker = new Worker(url, { type: "module" });
+      worker.postMessage({
+        source: "khepex",
+        method: "generateLolomoFromMovies",
+        payload: { movies, search },
+        movies,
+      });
+      return await new Promise<[string, TMovie[]][]>((res) => {
+        worker.onmessage = (e) => {
+          res(e.data.result);
+          worker.terminate();
+        };
+      });
+    },
+    [movies],
+  );
+
+  const refreshLolomo = useCallback(
+    (search?: string) => {
+      fetchLolomo(search).then((lolomo) => {
+        setLolomo(lolomo);
+      });
+    },
+    [fetchLolomo],
+  );
+
+  useEffect(() => {
+    if (!movies || lolomo) return undefined;
+    fetchLolomo().then((lolomo) => setLolomo(lolomo));
+  }, [fetchLolomo, lolomo, movies]);
 
   useEffect(() => {
     const moviesHandler = async () => {
@@ -58,16 +91,9 @@ export const useMovies = () => {
         setMovies(currentMovies);
       }
     };
-    const categoriesHandler = async () => {
-      if (categories === undefined) {
-        const currentCategories = await getCategoriesSortedByName();
-        setCategories(currentCategories);
-      }
-    };
 
     moviesHandler();
-    categoriesHandler();
-  }, [movies, categories, setCategories, setMovies]);
+  }, [movies, setMovies]);
 
-  return { movies, categories };
+  return { lolomo, refreshLolomo };
 };

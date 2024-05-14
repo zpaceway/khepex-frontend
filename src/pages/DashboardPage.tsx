@@ -132,29 +132,32 @@ const DashboardPage = () => {
             />
           </div>
           <div className="flex flex-col gap-8 overflow-hidden">
-            {lolomo.map(([category, movies]) => (
-              <div key={`category-${category}`} className="z-20">
-                <div className="px-4 text-5xl font-bold text-white">
-                  {category}
+            {lolomo.map(([category, movies]) => {
+              if (category === "For You" && search) return;
+              return (
+                <div key={`category-${category}`} className="z-20">
+                  <div className="px-4 text-5xl font-bold text-white">
+                    {category}
+                  </div>
+                  <div className="mx-4 flex gap-4 overflow-x-auto py-4">
+                    {movies.map((movie) => (
+                      <MovieCard
+                        key={`movie-${category}-${movie.id}`}
+                        movie={{
+                          ...movie,
+                          genres: category ? [category] : movie.genres,
+                        }}
+                        purchased={user.purchasedMovieIds.includes(movie.id)}
+                        onClick={() => {
+                          setBannerMovieId(movie.id);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="mx-4 flex gap-4 overflow-x-auto py-4">
-                  {movies.map((movie) => (
-                    <MovieCard
-                      key={`movie-${category}-${movie.id}`}
-                      movie={{
-                        ...movie,
-                        genres: category ? [category] : movie.genres,
-                      }}
-                      purchased={user.purchasedMovieIds.includes(movie.id)}
-                      onClick={() => {
-                        setBannerMovieId(movie.id);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </>
       )}

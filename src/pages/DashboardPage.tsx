@@ -132,7 +132,7 @@ const DashboardPage = () => {
         {["", ...categories].map((category) => (
           <div key={`category-${category}`} className="z-20">
             <div className="px-4 text-5xl font-bold text-white">
-              {category || "Recomended for You"}
+              {category || "For You"}
             </div>
             <div className="mx-4 flex gap-4 overflow-x-auto py-4">
               {movies

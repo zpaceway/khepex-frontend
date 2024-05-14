@@ -89,3 +89,7 @@ export const getMoviesSortedByRelevance = async (
 
   return filteredMovies;
 };
+
+export const getCategoriesSortedByName = () => {
+  return [...new Set(movies.map((movie) => movie.genres).flat())].sort();
+};

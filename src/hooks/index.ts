@@ -1,7 +1,8 @@
 import { useAtom } from "jotai";
-import { moviesAtom, userAtom } from "../atoms";
+import { categoriesAtom, moviesAtom, userAtom } from "../atoms";
 import { useCallback, useEffect } from "react";
 import {
+  getCategoriesSortedByName,
   getCurrentUser,
   getMoviesSortedByRelevance,
   signInWithEmailAndPassword,
@@ -48,16 +49,25 @@ export const useAuth = () => {
 
 export const useMovies = () => {
   const [movies, setMovies] = useAtom(moviesAtom);
+  const [categories, setCategories] = useAtom(categoriesAtom);
 
   useEffect(() => {
-    const handler = async () => {
+    const moviesHandler = async () => {
       if (movies === undefined) {
         const currentMovies = await getMoviesSortedByRelevance();
         setMovies(currentMovies);
       }
     };
-    handler();
-  }, [movies, setMovies]);
+    const categoriesHandler = async () => {
+      if (categories === undefined) {
+        const currentCategories = await getCategoriesSortedByName();
+        setCategories(currentCategories);
+      }
+    };
 
-  return { movies };
+    moviesHandler();
+    categoriesHandler();
+  }, [movies, categories, setCategories, setMovies]);
+
+  return { movies, categories };
 };

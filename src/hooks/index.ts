@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { moviesAtom, userAtom } from "../atoms";
 import { useCallback, useEffect, useState } from "react";
 import {
+  generateLolomoFromMovies,
   getCurrentUser,
   getMoviesSortedByRelevance,
   signInWithEmailAndPassword,
@@ -52,20 +53,22 @@ export const useMovies = () => {
 
   const fetchLolomo = useCallback(
     async (search?: string) => {
-      const url = new URL("../api", import.meta.url);
-      const worker = new Worker(url, { type: "module" });
-      worker.postMessage({
-        source: "khepex",
-        method: "generateLolomoFromMovies",
-        payload: { movies, search },
-        movies,
-      });
-      return await new Promise<[string, TMovie[]][]>((res) => {
-        worker.onmessage = (e) => {
-          res(e.data.result);
-          worker.terminate();
-        };
-      });
+      if (!movies) return;
+      // const url = new URL("../api", import.meta.url);
+      // const worker = new Worker(url, { type: "module" });
+      // worker.postMessage({
+      //   source: "khepex",
+      //   method: "generateLolomoFromMovies",
+      //   payload: { movies, search },
+      //   movies,
+      // });
+      // return await new Promise<[string, TMovie[]][]>((res) => {
+      //   worker.onmessage = (e) => {
+      //     res(e.data.result);
+      //     worker.terminate();
+      //   };
+      // });
+      return generateLolomoFromMovies({ movies, search });
     },
     [movies],
   );

@@ -83,7 +83,7 @@ export const generateLolomoFromMovies = async ({
 }: {
   movies: TMovie[];
   search?: string;
-}) => {
+}): Promise<[string, TMovie[]][]> => {
   await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
 
   const filteredMovies = movies.filter((movie) => {
@@ -117,7 +117,7 @@ export const generateLolomoFromMovies = async ({
         if (doesGenreIncludes) return true;
         return false;
       }),
-    ] as const;
+    ];
   });
 };
 

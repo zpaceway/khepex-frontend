@@ -121,15 +121,9 @@ export const generateLolomoFromMovies = async ({
   });
 };
 
-const methods = {
-  generateLolomoFromMovies,
-};
+export const purchaseMovieById = async (movieId: string) => {
+  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
+  if (!movieId) return false;
 
-self.onmessage = async (m) => {
-  if (m.data.source !== "khepex") return;
-
-  const method = methods[m.data.method as keyof typeof methods];
-  const result = await method(m.data.payload);
-
-  self.postMessage({ source: "khepex", result });
+  return true;
 };

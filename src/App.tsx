@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth, useMovies } from "./hooks";
+import { useUser, useMovies } from "./hooks";
 import { useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -8,7 +8,7 @@ const unprotectedRoutes = ["/auth"];
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuth();
+  const { user } = useUser();
   useMovies();
 
   useEffect(() => {

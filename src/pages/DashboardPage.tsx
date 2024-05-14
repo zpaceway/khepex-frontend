@@ -1,4 +1,4 @@
-import { useAuth, useMovies } from "../hooks";
+import { useUser, useMovies } from "../hooks";
 import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
@@ -10,10 +10,11 @@ import { twMerge } from "tailwind-merge";
 import NavBar from "../components/NavBar";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
 
 const DashboardPage = () => {
   const { lolomo, refreshLolomo } = useMovies();
-  const { user } = useAuth();
+  const { user } = useUser();
   const navigate = useNavigate();
   const appContainerRef = useRef<HTMLDivElement>(null);
   const [isWindowOnTop, setIsWindowOnTop] = useState(true);
@@ -78,8 +79,24 @@ const DashboardPage = () => {
         <>
           <div className="relative h-full max-h-[max(100vh,600px)] min-h-[max(100vh,600px)] w-full bg-white">
             <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-black bg-opacity-20 px-4 text-white lg:px-8">
-              <div className="max-w-[400px] text-4xl font-bold">
-                {bannerMovie.title}
+              <div className="flex max-w-[400px] gap-2 text-4xl font-bold">
+                <div>{bannerMovie.title}</div>
+                {!user.purchasedMovieIds.includes(bannerMovie.id) && (
+                  <div className="flex flex-col">
+                    <button
+                      className="flex items-center justify-center gap-2 rounded-md bg-emerald-500 bg-opacity-60 px-4 py-2 text-sm transition-all hover:bg-opacity-80"
+                      onClick={() => {
+                        navigate(`/rent/${bannerMovie.id}`);
+                      }}
+                    >
+                      <div className="flex items-center gap-1">
+                        <FaEye className="shrink-0" />
+
+                        <div className="">Rent</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="max-w-[400px] text-lg">
                 {bannerMovie.description}
@@ -87,7 +104,7 @@ const DashboardPage = () => {
               <div className="flex gap-2">
                 <button
                   className={twMerge(
-                    "gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-opacity-80",
+                    "flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-opacity-80",
                     user.purchasedMovieIds.includes(bannerMovie.id)
                       ? "bg-purple-500"
                       : "bg-emerald-500",
@@ -96,7 +113,7 @@ const DashboardPage = () => {
                     if (user.purchasedMovieIds.includes(bannerMovie.id)) {
                       return navigate(`/play/${bannerMovie.id}`);
                     }
-                    navigate(`/shop/${bannerMovie.id}`);
+                    navigate(`/buy/${bannerMovie.id}`);
                   }}
                 >
                   <div className="flex items-center gap-1">
@@ -109,7 +126,7 @@ const DashboardPage = () => {
                     <div className="">
                       {user.purchasedMovieIds.includes(bannerMovie.id)
                         ? "Play"
-                        : (bannerMovie.priceInCents / 100).toFixed(2)}
+                        : (bannerMovie.purchasePriceInCents / 100).toFixed(2)}
                     </div>
                   </div>
                 </button>
@@ -141,18 +158,26 @@ const DashboardPage = () => {
                   </div>
                   <div className="mx-4 flex gap-4 overflow-x-auto py-4">
                     {movies.map((movie) => (
-                      <MovieCard
-                        key={`movie-${category}-${movie.id}`}
-                        movie={{
-                          ...movie,
-                          genres: category ? [category] : movie.genres,
-                        }}
-                        purchased={user.purchasedMovieIds.includes(movie.id)}
-                        onClick={() => {
-                          setBannerMovieId(movie.id);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }}
-                      />
+                      <div className="flex w-40 shrink-0 flex-col gap-1 overflow-hidden text-white">
+                        <div className="h-60 w-40 overflow-hidden">
+                          <MovieCard
+                            key={`movie-${category}-${movie.id}`}
+                            movie={{
+                              ...movie,
+                              genres: category ? [category] : movie.genres,
+                            }}
+                            purchased={user.purchasedMovieIds.includes(
+                              movie.id,
+                            )}
+                            onClick={() => {
+                              setBannerMovieId(movie.id);
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
+                            mode="buy"
+                          />
+                        </div>
+                        <div className="truncate text-sm">{movie.title}</div>
+                      </div>
                     ))}
                   </div>
                 </div>

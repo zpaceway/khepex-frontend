@@ -5,12 +5,13 @@ import {
   generateLolomoFromMovies,
   getCurrentUser,
   getMoviesSortedByRelevance,
+  purchaseMovieById,
   signInWithEmailAndPassword,
   signUpUser,
 } from "../api";
 import { TMovie, TUser } from "../types";
 
-export const useAuth = () => {
+export const useUser = () => {
   const [user, setUser] = useAtom(userAtom);
   const signIn = useCallback(
     async (email: string, password: string) => {
@@ -30,6 +31,20 @@ export const useAuth = () => {
     [setUser],
   );
 
+  const purchase = useCallback(
+    async (movieId: string) => {
+      if (!user) return false;
+      const result = await purchaseMovieById(movieId);
+      if (!result) return false;
+      setUser({
+        ...user,
+        purchasedMovieIds: [...new Set([...user.purchasedMovieIds, movieId])],
+      });
+      return true;
+    },
+    [user, setUser],
+  );
+
   useEffect(() => {
     const handler = async () => {
       if (user === undefined) {
@@ -44,6 +59,7 @@ export const useAuth = () => {
     user,
     signIn,
     signUp,
+    purchase,
   };
 };
 
@@ -54,20 +70,6 @@ export const useMovies = () => {
   const fetchLolomo = useCallback(
     async (search?: string) => {
       if (!movies) return;
-      // const url = new URL("../api", import.meta.url);
-      // const worker = new Worker(url, { type: "module" });
-      // worker.postMessage({
-      //   source: "khepex",
-      //   method: "generateLolomoFromMovies",
-      //   payload: { movies, search },
-      //   movies,
-      // });
-      // return await new Promise<[string, TMovie[]][]>((res) => {
-      //   worker.onmessage = (e) => {
-      //     res(e.data.result);
-      //     worker.terminate();
-      //   };
-      // });
       return generateLolomoFromMovies({ movies, search });
     },
     [movies],

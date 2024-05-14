@@ -4,7 +4,7 @@ import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TextField from "../components/TextField";
-import { useAuth } from "../hooks";
+import { useUser } from "../hooks";
 import { toast } from "react-toastify";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ type SignUpFormSchemaType = z.infer<typeof signUpFormSchema>;
 type SignInFormSchemaType = z.infer<typeof signInFormSchema>;
 
 const AuthPage = () => {
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp } = useUser();
   const navigate = useNavigate();
   const [isNewUser, setIsNewUser] = useState(false);
   const {

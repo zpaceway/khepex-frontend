@@ -7,17 +7,18 @@ import { twMerge } from "tailwind-merge";
 
 type MovieCardProps = {
   movie: TMovie;
-  onClick: () => void;
+  onClick?: () => void;
   purchased: boolean;
+  mode: "rent" | "buy";
 };
 
-const MovieCard = ({ movie, onClick, purchased }: MovieCardProps) => {
+const MovieCard = ({ movie, onClick, purchased, mode }: MovieCardProps) => {
   return (
     <div
-      className="flex w-40 shrink-0 cursor-pointer flex-col gap-1 overflow-hidden text-white"
+      className="flex w-full cursor-pointer flex-col gap-1 overflow-hidden text-white"
       onClick={onClick}
     >
-      <div className="relative h-60 w-40 shrink-0">
+      <div className="relative w-full">
         <div
           className={twMerge(
             "absolute right-2 top-2 flex items-center gap-1 rounded-full px-2 py-1",
@@ -32,7 +33,13 @@ const MovieCard = ({ movie, onClick, purchased }: MovieCardProps) => {
             )}
 
             <div className="text-xs">
-              {purchased ? "Play" : (movie.priceInCents / 100).toFixed(2)}
+              {purchased
+                ? "Play"
+                : (
+                    (mode === "buy"
+                      ? movie.purchasePriceInCents
+                      : movie.rentPriceInCents) / 100
+                  ).toFixed(2)}
             </div>
           </div>
         </div>
@@ -58,7 +65,6 @@ const MovieCard = ({ movie, onClick, purchased }: MovieCardProps) => {
           </div>
         </div>
       </div>
-      <div className="truncate text-sm font-medium">{movie.title}</div>
     </div>
   );
 };

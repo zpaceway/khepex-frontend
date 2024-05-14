@@ -73,7 +73,7 @@ const AuthPage = () => {
       return;
     }
 
-    toast.success("Welcome back!");
+    toast.success("Welcome to Khepex!");
     navigate("/");
   };
   const onSubmitSignInForm: SubmitHandler<SignInFormSchemaType> = async (
@@ -85,7 +85,7 @@ const AuthPage = () => {
         "User not found, please verify your email and password!",
       );
 
-    toast.success("Welcome back!");
+    toast.success("Welcome to Khepex!");
     navigate("/");
   };
 
@@ -106,7 +106,7 @@ const AuthPage = () => {
             : handleSubmitSignInForm(onSubmitSignInForm)
         }
       >
-        <h1 className="z-10 text-2xl font-bold">Welcome back!</h1>
+        <h1 className="z-10 text-2xl font-bold">Welcome to Khepex!</h1>
         <div className="z-10 flex flex-col gap-2">
           {isNewUser && (
             <TextField

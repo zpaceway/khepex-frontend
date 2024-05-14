@@ -98,5 +98,5 @@ export const useMovies = () => {
     moviesHandler();
   }, [movies, setMovies]);
 
-  return { lolomo, refreshLolomo };
+  return { movies, lolomo, refreshLolomo };
 };

@@ -33,8 +33,8 @@ const NavBar = ({
           <FaSearch className="absolute left-2 top-2.5" />
           <input
             type="text"
-            className="rounded-md p-2 pl-8 outline-none"
-            placeholder="Search by title or genre"
+            className="w-40 min-w-0 rounded-md p-2 pl-8 outline-none"
+            placeholder="Title or genre"
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
           />

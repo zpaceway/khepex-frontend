@@ -3,6 +3,7 @@ import "./index.css";
 import App from "./App";
 import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
+import MoviePlayerPage from "./pages/MoviePlayerPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <AuthPage />,
+      },
+      {
+        path: "play/:movieId",
+        element: <MoviePlayerPage />,
       },
     ],
   },

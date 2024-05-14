@@ -9,30 +9,32 @@ import { Debouncer } from "../utils";
 import { twMerge } from "tailwind-merge";
 import NavBar from "../components/NavBar";
 import MovieCard from "../components/MovieCard";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
   const { lolomo, refreshLolomo } = useMovies();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const appContainerRef = useRef<HTMLDivElement>(null);
   const [isWindowOnTop, setIsWindowOnTop] = useState(true);
   const [search, setSearch] = useState("");
   const scrollDebouncerRef = useRef(new Debouncer(50));
   const searchDebouncerRef = useRef(new Debouncer(200));
-  const [promotedMovieId, setPromotedMovieId] = useState<string | undefined>(
+  const [bannerMovieId, setBannerMovieId] = useState<string | undefined>(
     undefined,
   );
-  const promotedMovie = useMemo(() => {
-    const promotedMovie = lolomo?.[0]?.[1]?.find(
-      (movie) => movie.id === promotedMovieId,
+  const bannerMovie = useMemo(() => {
+    const newBannerMovie = lolomo?.[0]?.[1]?.find(
+      (movie) => movie.id === bannerMovieId,
     );
-    if (!promotedMovie) return lolomo?.[0]?.[1]?.[0];
-    return promotedMovie;
-  }, [lolomo, promotedMovieId]);
+    if (!newBannerMovie) return lolomo?.[0]?.[1]?.[0];
+    return newBannerMovie;
+  }, [lolomo, bannerMovieId]);
 
   useEffect(() => {
-    if (!lolomo || promotedMovieId) return;
-    setPromotedMovieId(lolomo[0]?.[1]?.[0].id);
-  }, [lolomo, promotedMovieId]);
+    if (!lolomo || bannerMovieId) return;
+    setBannerMovieId(lolomo[0]?.[1]?.[0].id);
+  }, [lolomo, bannerMovieId]);
 
   useEffect(() => {
     const appContainer = appContainerRef.current;
@@ -68,7 +70,7 @@ const DashboardPage = () => {
         search={search}
         user={user}
       />
-      {!promotedMovie ? (
+      {!bannerMovie ? (
         <div className="flex h-screen w-full items-center justify-center text-6xl text-white">
           No results were found
         </div>
@@ -77,31 +79,37 @@ const DashboardPage = () => {
           <div className="relative h-full max-h-[max(100vh,600px)] min-h-[max(100vh,600px)] w-full bg-white">
             <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-black bg-opacity-20 px-4 text-white lg:px-8">
               <div className="max-w-[400px] text-4xl font-bold">
-                {promotedMovie.title}
+                {bannerMovie.title}
               </div>
               <div className="max-w-[400px] text-lg">
-                {promotedMovie.description}
+                {bannerMovie.description}
               </div>
               <div className="flex gap-2">
                 <button
                   className={twMerge(
                     "gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-opacity-80",
-                    user.purchasedMovieIds.includes(promotedMovie.id)
+                    user.purchasedMovieIds.includes(bannerMovie.id)
                       ? "bg-purple-500"
                       : "bg-emerald-500",
                   )}
+                  onClick={() => {
+                    if (user.purchasedMovieIds.includes(bannerMovie.id)) {
+                      console.log("here");
+                      navigate(`/play/${bannerMovie.id}`);
+                    }
+                  }}
                 >
                   <div className="flex items-center gap-1">
-                    {user.purchasedMovieIds.includes(promotedMovie.id) ? (
+                    {user.purchasedMovieIds.includes(bannerMovie.id) ? (
                       <FaPlay className="shrink-0" />
                     ) : (
                       <FaShoppingCart className="shrink-0" />
                     )}
 
                     <div className="">
-                      {user.purchasedMovieIds.includes(promotedMovie.id)
+                      {user.purchasedMovieIds.includes(bannerMovie.id)
                         ? "Play"
-                        : (promotedMovie.priceInCents / 100).toFixed(2)}
+                        : (bannerMovie.priceInCents / 100).toFixed(2)}
                     </div>
                   </div>
                 </button>
@@ -113,7 +121,7 @@ const DashboardPage = () => {
               <div className="absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-zinc-900 to-transparent"></div>
             </div>
             <img
-              src={promotedMovie.banner}
+              src={bannerMovie.banner}
               alt=""
               className="absolute inset-0 h-full w-full object-cover object-top"
             />
@@ -134,7 +142,7 @@ const DashboardPage = () => {
                       }}
                       purchased={user.purchasedMovieIds.includes(movie.id)}
                       onClick={() => {
-                        setPromotedMovieId(movie.id);
+                        setBannerMovieId(movie.id);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
                     />

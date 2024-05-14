@@ -10,6 +10,7 @@ export const users: (TUser & { password: string })[] = [
     purchasedMovieIds: ["1", "4", "3", "10", "13", "16", "20", "5", "2", "7"],
   },
 ];
+
 export const movies: TMovie[] = [
   {
     id: "1",
@@ -24,6 +25,7 @@ export const movies: TMovie[] = [
     description:
       "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=6hB3S9bIaco",
   },
   {
     id: "2",
@@ -38,6 +40,7 @@ export const movies: TMovie[] = [
     description:
       "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
     priceInCents: 1399,
+    trailer: "https://www.youtube.com/watch?v=sY1S34973zA",
   },
   {
     id: "3",
@@ -52,6 +55,7 @@ export const movies: TMovie[] = [
     description:
       "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
     priceInCents: 1199,
+    trailer: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   },
   {
     id: "4",
@@ -66,6 +70,7 @@ export const movies: TMovie[] = [
     description:
       "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
   },
   {
     id: "5",
@@ -80,6 +85,7 @@ export const movies: TMovie[] = [
     description:
       "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.",
     priceInCents: 1199,
+    trailer: "https://www.youtube.com/watch?v=bLvqoHBptjg",
   },
   {
     id: "6",
@@ -94,6 +100,7 @@ export const movies: TMovie[] = [
     description:
       "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
     priceInCents: 1399,
+    trailer: "https://www.youtube.com/watch?v=YoHD9XEInc0",
   },
   {
     id: "7",
@@ -108,6 +115,7 @@ export const movies: TMovie[] = [
     description:
       "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=SUXWAEX2jlg",
   },
   {
     id: "8",
@@ -122,6 +130,7 @@ export const movies: TMovie[] = [
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
     priceInCents: 1199,
+    trailer: "https://www.youtube.com/watch?v=vKQi3bBA1y8",
   },
   {
     id: "9",
@@ -136,6 +145,7 @@ export const movies: TMovie[] = [
     description:
       "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
     priceInCents: 1399,
+    trailer: "https://www.youtube.com/watch?v=2ilzidi_J8Q",
   },
   {
     id: "10",
@@ -150,6 +160,7 @@ export const movies: TMovie[] = [
     description:
       "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
     priceInCents: 1499,
+    trailer: "https://www.youtube.com/watch?v=r5X-hFf6Bwo",
   },
   {
     id: "11",
@@ -164,6 +175,7 @@ export const movies: TMovie[] = [
     description:
       "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to catch another serial killer, a madman who skins his victims.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=RuX2MQeb8UM",
   },
   {
     id: "12",
@@ -178,6 +190,7 @@ export const movies: TMovie[] = [
     description:
       "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
     priceInCents: 1499,
+    trailer: "https://www.youtube.com/watch?v=gG22XNhtnoY",
   },
   {
     id: "13",
@@ -192,6 +205,7 @@ export const movies: TMovie[] = [
     description:
       "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
     priceInCents: 1399,
+    trailer: "https://www.youtube.com/watch?v=Ki4haFrqSrw",
   },
   {
     id: "14",
@@ -206,6 +220,7 @@ export const movies: TMovie[] = [
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     priceInCents: 1499,
+    trailer: "https://www.youtube.com/watch?v=zSWdZVtXT7E",
   },
   {
     id: "15",
@@ -220,6 +235,7 @@ export const movies: TMovie[] = [
     description:
       "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=oiXdPolca5w",
   },
   {
     id: "16",
@@ -234,6 +250,7 @@ export const movies: TMovie[] = [
     description:
       "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
     priceInCents: 1199,
+    trailer: "https://www.youtube.com/watch?v=4sj1MT05lAA",
   },
   {
     id: "17",
@@ -248,6 +265,7 @@ export const movies: TMovie[] = [
     description:
       "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=owK1qxDselE",
   },
   {
     id: "18",
@@ -262,6 +280,7 @@ export const movies: TMovie[] = [
     description:
       "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=o4gHCmTQDVI",
   },
   {
     id: "19",
@@ -276,6 +295,7 @@ export const movies: TMovie[] = [
     description:
       "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
     priceInCents: 1399,
+    trailer: "https://www.youtube.com/watch?v=iojhqm0JTW4",
   },
   {
     id: "20",
@@ -290,5 +310,6 @@ export const movies: TMovie[] = [
     description:
       "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
     priceInCents: 1299,
+    trailer: "https://www.youtube.com/watch?v=7d_jQycdQGo",
   },
 ];

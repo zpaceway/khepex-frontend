@@ -99,14 +99,20 @@ const AuthPage = () => {
         />
       </div>
       <form
-        className="z-10 flex w-full max-w-md flex-col gap-8 overflow-hidden rounded-md border border-purple-300 border-opacity-20 bg-purple-300 bg-opacity-30 px-4 py-8 shadow-md"
+        className="z-10 flex w-full max-w-md flex-col gap-8 overflow-hidden rounded-md border border-purple-300 border-opacity-20 bg-purple-300 bg-opacity-20 px-4 py-8 shadow-md"
         onSubmit={
           isNewUser
             ? handleSubmitSignUpForm(onSubmitSignUpForm)
             : handleSubmitSignInForm(onSubmitSignInForm)
         }
       >
-        <h1 className="z-10 text-2xl font-bold">Welcome to Khepex!</h1>
+        <h1 className="z-10 text-2xl font-bold">
+          Welcome to{" "}
+          <span className="text-3xl font-black text-purple-400">
+            <span>KHE</span>
+            <span className="text-lg font-medium italic text-white">pex</span>
+          </span>
+        </h1>
         <div className="z-10 flex flex-col gap-2">
           {isNewUser && (
             <TextField

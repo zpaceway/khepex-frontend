@@ -1,7 +1,12 @@
 import { useAtom } from "jotai";
-import { userAtom } from "../atoms";
+import { moviesAtom, userAtom } from "../atoms";
 import { useCallback, useEffect } from "react";
-import { getCurrentUser, signInWithEmailAndPassword, signUpUser } from "../api";
+import {
+  getCurrentUser,
+  getMoviesSortedByRelevance,
+  signInWithEmailAndPassword,
+  signUpUser,
+} from "../api";
 import { TUser } from "../types";
 
 export const useAuth = () => {
@@ -9,9 +14,7 @@ export const useAuth = () => {
   const signIn = useCallback(
     async (email: string, password: string) => {
       const user = await signInWithEmailAndPassword(email, password);
-      if (user) localStorage.setItem("currentUserId", user.id);
       setUser(user);
-
       return user;
     },
     [setUser],
@@ -21,7 +24,6 @@ export const useAuth = () => {
     async (newUser: Omit<TUser & { password: string }, "id">) => {
       const user = await signUpUser(newUser);
       setUser(user);
-
       return user;
     },
     [setUser],
@@ -42,4 +44,20 @@ export const useAuth = () => {
     signIn,
     signUp,
   };
+};
+
+export const useMovies = () => {
+  const [movies, setMovies] = useAtom(moviesAtom);
+
+  useEffect(() => {
+    const handler = async () => {
+      if (movies === undefined) {
+        const currentMovies = await getMoviesSortedByRelevance();
+        setMovies(currentMovies);
+      }
+    };
+    handler();
+  }, [movies, setMovies]);
+
+  return { movies };
 };

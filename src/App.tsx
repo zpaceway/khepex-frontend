@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "./hooks";
-import { CgSpinner } from "react-icons/cg";
+import { useAuth, useMovies } from "./hooks";
 import { useEffect } from "react";
+import LoadingPage from "./pages/LoadingPage";
 
 const unprotectedRoutes = ["/auth"];
 
@@ -9,6 +9,7 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+  useMovies();
 
   useEffect(() => {
     if (user !== null || unprotectedRoutes.includes(location.pathname)) return;
@@ -16,11 +17,7 @@ const App = () => {
   }, [user, location.pathname, navigate]);
 
   if (!user && !unprotectedRoutes.includes(location.pathname)) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-zinc-800">
-        <CgSpinner className="animate-spin text-4xl text-white" />
-      </div>
-    );
+    return <LoadingPage />;
   }
 
   return <Outlet />;

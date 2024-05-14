@@ -1,5 +1,5 @@
-import { users } from "../__mock__";
-import { TUser } from "../types";
+import { movies, users } from "../__mock__";
+import { TMovie, TUser } from "../types";
 import { delay } from "../utils";
 
 export const getCurrentUser = async (): Promise<TUser | null> => {
@@ -30,6 +30,8 @@ export const signInWithEmailAndPassword = async (
   });
 
   if (user) {
+    localStorage.setItem("currentUserId", user.id);
+
     return {
       id: user.id,
       email: user.email,
@@ -58,4 +60,15 @@ export const signUpUser = async (
     id: userId,
     ...user,
   };
+};
+
+export const getMoviesSortedByRelevance = async (
+  filters: Partial<TMovie> = {},
+) => {
+  await delay(1000);
+  return movies.filter((movie) => {
+    return Object.entries(filters).every(([key, value]) => {
+      return movie[key as keyof TMovie] === value;
+    });
+  });
 };

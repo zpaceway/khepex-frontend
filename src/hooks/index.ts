@@ -52,7 +52,7 @@ export const useMovies = () => {
 
   const fetchLolomo = useCallback(
     async (search?: string) => {
-      const url = new URL("../api/index.ts", import.meta.url);
+      const url = new URL("../api", import.meta.url);
       const worker = new Worker(url, { type: "module" });
       worker.postMessage({
         source: "khepex",

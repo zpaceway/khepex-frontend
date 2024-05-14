@@ -1,4 +1,4 @@
-import { useMovies } from "../hooks";
+import { useAuth, useMovies } from "../hooks";
 import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -13,15 +13,34 @@ import { twMerge } from "tailwind-merge";
 type MovieCardProps = {
   movie: TMovie;
   onClick: () => void;
+  purchased: boolean;
 };
 
-const MovieCard = ({ movie, onClick }: MovieCardProps) => {
+const MovieCard = ({ movie, onClick, purchased }: MovieCardProps) => {
   return (
     <div
       className="flex w-40 shrink-0 cursor-pointer flex-col gap-1 overflow-hidden text-white"
       onClick={onClick}
     >
       <div className="relative h-60 w-40 shrink-0">
+        <div
+          className={twMerge(
+            "absolute right-2 top-2 flex items-center gap-1 rounded-full px-2 py-1",
+            purchased ? "bg-purple-500" : "bg-emerald-500",
+          )}
+        >
+          <div className="flex items-center gap-1">
+            {purchased ? (
+              <FaPlay className="shrink-0 text-xs" />
+            ) : (
+              <FaShoppingCart className="shrink-0 text-xs" />
+            )}
+
+            <div className="text-xs">
+              {purchased ? "Play" : (movie.priceInCents / 100).toFixed(2)}
+            </div>
+          </div>
+        </div>
         <img
           src={movie.cover}
           className="h-full w-full object-cover shadow-md"
@@ -44,16 +63,14 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-2">
-        <FaShoppingCart className="shrink-0 text-xs" />
-        <div className="truncate text-sm font-medium">{movie.name}</div>
-      </div>
+      <div className="truncate text-sm font-medium">{movie.name}</div>
     </div>
   );
 };
 
 const DashboardPage = () => {
   const { movies, categories } = useMovies();
+  const { user } = useAuth();
   const appContainerRef = useRef<HTMLDivElement>(null);
   const [isWindowOnTop, setIsWindowOnTop] = useState(true);
   const debouncerRef = useRef(new Debouncer(50));
@@ -87,14 +104,16 @@ const DashboardPage = () => {
     };
   });
 
-  if (!movies || !categories || !promotedMovie) return <LoadingPage />;
+  if (!movies || !categories || !promotedMovie || !user) return <LoadingPage />;
 
   return (
     <div ref={appContainerRef} className="flex flex-col gap-8 bg-zinc-900">
       <div
         className={twMerge(
-          "fixed top-0 z-50 flex h-16 w-full shrink-0 items-center bg-black px-4 backdrop-blur-sm transition-all lg:px-8",
-          isWindowOnTop ? "bg-opacity-30" : "bg-opacity-90",
+          "fixed top-0 z-50 flex h-16 w-full shrink-0 items-center border-b border-b-white bg-black px-4 backdrop-blur-sm transition-all lg:px-8",
+          isWindowOnTop
+            ? "border-opacity-0 bg-opacity-50"
+            : "border-opacity-20 bg-opacity-80",
         )}
       >
         <div className="text-3xl font-black text-purple-400">
@@ -111,9 +130,27 @@ const DashboardPage = () => {
             {promotedMovie.description}
           </div>
           <div className="flex gap-2">
-            <button className="gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-zinc-500 hover:bg-opacity-80">
-              <FaPlay />
-              <div>Play</div>
+            <button
+              className={twMerge(
+                "gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-opacity-80",
+                user.purchasedMovieIds.includes(promotedMovie.id)
+                  ? "bg-purple-500"
+                  : "bg-emerald-500",
+              )}
+            >
+              <div className="flex items-center gap-1">
+                {user.purchasedMovieIds.includes(promotedMovie.id) ? (
+                  <FaPlay className="shrink-0" />
+                ) : (
+                  <FaShoppingCart className="shrink-0" />
+                )}
+
+                <div className="">
+                  {user.purchasedMovieIds.includes(promotedMovie.id)
+                    ? "Play"
+                    : (promotedMovie.priceInCents / 100).toFixed(2)}
+                </div>
+              </div>
             </button>
             <button className="gap- 2 flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-zinc-500 hover:bg-opacity-80">
               <FaInfoCircle />
@@ -144,6 +181,7 @@ const DashboardPage = () => {
                       ...movie,
                       genres: category ? [category] : movie.genres,
                     }}
+                    purchased={user.purchasedMovieIds.includes(movie.id)}
                     onClick={() => {
                       setPromotedMovieId(movie.id);
                       window.scrollTo({ top: 0, behavior: "smooth" });

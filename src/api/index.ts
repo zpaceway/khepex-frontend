@@ -12,6 +12,7 @@ export const getCurrentUser = async (): Promise<TUser | null> => {
         id: user.id,
         email: user.email,
         name: user.name,
+        purchasedMovieIds: user.purchasedMovieIds,
       };
     }
 
@@ -36,6 +37,7 @@ export const signInWithEmailAndPassword = async (
       id: user.id,
       email: user.email,
       name: user.name,
+      purchasedMovieIds: user.purchasedMovieIds,
     };
   }
 

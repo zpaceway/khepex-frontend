@@ -2,6 +2,7 @@ export type TUser = {
   id: string;
   name: string;
   email: string;
+  purchasedMovieIds: string[];
 };
 
 export type TMovie = {
@@ -15,4 +16,5 @@ export type TMovie = {
   year: number;
   genres: string[];
   description: string;
+  priceInCents: number;
 };

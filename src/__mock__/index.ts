@@ -3,18 +3,12 @@ import { TMovie, TUser } from "../types";
 export const users: (TUser & { password: string })[] = [
   {
     id: "1",
-    email: "alexandrotapiaflores@gmail.com",
+    email: "test@test.com",
     name: "Alexandro Tapia",
     password: "123456",
-  },
-  {
-    id: "2",
-    email: "alexandro@zpaceway.com",
-    name: "Andrés Tapia",
-    password: "AABBCC",
+    purchasedMovieIds: ["1", "4", "3", "10", "13", "16", "20", "5", "2", "7"],
   },
 ];
-
 export const movies: TMovie[] = [
   {
     id: "1",
@@ -28,6 +22,7 @@ export const movies: TMovie[] = [
     genres: ["Drama"],
     description:
       "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    priceInCents: 1299,
   },
   {
     id: "2",
@@ -41,6 +36,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama"],
     description:
       "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    priceInCents: 1399,
   },
   {
     id: "3",
@@ -54,6 +50,7 @@ export const movies: TMovie[] = [
     genres: ["Action", "Crime", "Drama"],
     description:
       "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    priceInCents: 1199,
   },
   {
     id: "4",
@@ -67,6 +64,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama"],
     description:
       "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    priceInCents: 1299,
   },
   {
     id: "5",
@@ -80,6 +78,7 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Romance"],
     description:
       "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.",
+    priceInCents: 1199,
   },
   {
     id: "6",
@@ -93,6 +92,7 @@ export const movies: TMovie[] = [
     genres: ["Action", "Adventure", "Sci-Fi"],
     description:
       "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    priceInCents: 1399,
   },
   {
     id: "7",
@@ -106,6 +106,7 @@ export const movies: TMovie[] = [
     genres: ["Drama"],
     description:
       "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+    priceInCents: 1299,
   },
   {
     id: "8",
@@ -119,6 +120,7 @@ export const movies: TMovie[] = [
     genres: ["Action", "Sci-Fi"],
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    priceInCents: 1199,
   },
   {
     id: "9",
@@ -132,6 +134,7 @@ export const movies: TMovie[] = [
     genres: ["Biography", "Crime", "Drama"],
     description:
       "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
+    priceInCents: 1399,
   },
   {
     id: "10",
@@ -145,6 +148,7 @@ export const movies: TMovie[] = [
     genres: ["Adventure", "Drama", "Fantasy"],
     description:
       "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    priceInCents: 1499,
   },
   {
     id: "11",
@@ -158,6 +162,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Thriller"],
     description:
       "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to catch another serial killer, a madman who skins his victims.",
+    priceInCents: 1299,
   },
   {
     id: "12",
@@ -171,6 +176,7 @@ export const movies: TMovie[] = [
     genres: ["Biography", "Drama", "History"],
     description:
       "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    priceInCents: 1499,
   },
   {
     id: "13",
@@ -184,6 +190,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Fantasy"],
     description:
       "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+    priceInCents: 1399,
   },
   {
     id: "14",
@@ -197,6 +204,7 @@ export const movies: TMovie[] = [
     genres: ["Adventure", "Drama", "Sci-Fi"],
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    priceInCents: 1499,
   },
   {
     id: "15",
@@ -210,6 +218,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Mystery"],
     description:
       "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
+    priceInCents: 1299,
   },
   {
     id: "16",
@@ -223,6 +232,7 @@ export const movies: TMovie[] = [
     genres: ["Animation", "Adventure", "Drama"],
     description:
       "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    priceInCents: 1199,
   },
   {
     id: "17",
@@ -236,6 +246,7 @@ export const movies: TMovie[] = [
     genres: ["Action", "Adventure", "Drama"],
     description:
       "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    priceInCents: 1299,
   },
   {
     id: "18",
@@ -249,6 +260,7 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Mystery", "Sci-Fi"],
     description:
       "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    priceInCents: 1299,
   },
   {
     id: "19",
@@ -262,6 +274,7 @@ export const movies: TMovie[] = [
     genres: ["Crime", "Drama", "Thriller"],
     description:
       "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    priceInCents: 1399,
   },
   {
     id: "20",
@@ -275,135 +288,6 @@ export const movies: TMovie[] = [
     genres: ["Drama", "Music"],
     description:
       "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
+    priceInCents: 1299,
   },
-  // {
-  //   id: "21",
-  //   name: "Django Unchained",
-  //   banner: "/movies/Django Unchained/banner.jpg",
-  //   cover: "/movies/Django Unchained/cover.jpg",
-  //   ratings: 8.4,
-  //   durationInSeconds: 10800,
-  //   director: "Quentin Tarantino",
-  //   year: 2012,
-  //   genres: ["Drama", "Western"],
-  //   description:
-  //     "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
-  // },
-  // {
-  //   id: "22",
-  //   name: "Braveheart",
-  //   banner: "/movies/Braveheart/banner.jpg",
-  //   cover: "/movies/Braveheart/cover.jpg",
-  //   ratings: 8.4,
-  //   durationInSeconds: 10800,
-  //   director: "Mel Gibson",
-  //   year: 1995,
-  //   genres: ["Biography", "Drama", "History"],
-  //   description:
-  //     "Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.",
-  // },
-  // {
-  //   id: "23",
-  //   name: "The Wolf of Wall Street",
-  //   banner: "/movies/The Wolf of Wall Street/banner.jpg",
-  //   cover: "/movies/The Wolf of Wall Street/cover.jpg",
-  //   ratings: 8.2,
-  //   durationInSeconds: 10800,
-  //   director: "Martin Scorsese",
-  //   year: 2013,
-  //   genres: ["Biography", "Comedy", "Crime"],
-  //   description:
-  //     "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption, and the federal government.",
-  // },
-  // {
-  //   id: "24",
-  //   name: "The Pianist",
-  //   banner: "/movies/The Pianist/banner.jpg",
-  //   cover: "/movies/The Pianist/cover.jpg",
-  //   ratings: 8.5,
-  //   durationInSeconds: 9000,
-  //   director: "Roman Polanski",
-  //   year: 2002,
-  //   genres: ["Biography", "Drama", "Music"],
-  //   description:
-  //     "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.",
-  // },
-  // {
-  //   id: "25",
-  //   name: "Parasite",
-  //   banner: "/movies/Parasite/banner.jpg",
-  //   cover: "/movies/Parasite/cover.jpg",
-  //   ratings: 8.6,
-  //   durationInSeconds: 7920,
-  //   director: "Bong Joon Ho",
-  //   year: 2019,
-  //   genres: ["Comedy", "Drama", "Thriller"],
-  //   description:
-  //     "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-  // },
-  // {
-  //   id: "26",
-  //   name: "Avengers: Endgame",
-  //   banner: "/movies/Avengers Endgame/banner.jpg",
-  //   cover: "/movies/Avengers Endgame/cover.jpg",
-  //   ratings: 8.4,
-  //   durationInSeconds: 10800,
-  //   director: "Anthony Russo, Joe Russo",
-  //   year: 2019,
-  //   genres: ["Action", "Adventure", "Drama"],
-  //   description:
-  //     "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
-  // },
-  // {
-  //   id: "27",
-  //   name: "Saving Private Ryan",
-  //   banner: "/movies/Saving Private Ryan/banner.jpg",
-  //   cover: "/movies/Saving Private Ryan/cover.jpg",
-  //   ratings: 8.6,
-  //   durationInSeconds: 10200,
-  //   director: "Steven Spielberg",
-  //   year: 1998,
-  //   genres: ["Drama", "War"],
-  //   description:
-  //     "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
-  // },
-  // {
-  //   id: "28",
-  //   name: "City of God",
-  //   banner: "/movies/City of God/banner.jpg",
-  //   cover: "/movies/City of God/cover.jpg",
-  //   ratings: 8.6,
-  //   durationInSeconds: 7860,
-  //   director: "Fernando Meirelles, Kátia Lund",
-  //   year: 2002,
-  //   genres: ["Crime", "Drama"],
-  //   description:
-  //     "In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.",
-  // },
-  // {
-  //   id: "29",
-  //   name: "Back to the Future",
-  //   banner: "/movies/Back to the Future/banner.jpg",
-  //   cover: "/movies/Back to the Future/cover.jpg",
-  //   ratings: 8.5,
-  //   durationInSeconds: 6960,
-  //   director: "Robert Zemeckis",
-  //   year: 1985,
-  //   genres: ["Adventure", "Comedy", "Sci-Fi"],
-  //   description:
-  //     "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, eccentric scientist Doc Brown.",
-  // },
-  // {
-  //   id: "30",
-  //   name: "American Beauty",
-  //   banner: "/movies/American Beauty/banner.jpg",
-  //   cover: "/movies/American Beauty/cover.jpg",
-  //   ratings: 8.3,
-  //   durationInSeconds: 7320,
-  //   director: "Sam Mendes",
-  //   year: 1999,
-  //   genres: ["Drama"],
-  //   description:
-  //     "A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend.",
-  // },
 ];

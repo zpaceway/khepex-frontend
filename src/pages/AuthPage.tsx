@@ -65,6 +65,7 @@ const AuthPage = () => {
       name: data.name,
       email: data.email,
       password: data.password,
+      purchasedMovieIds: [],
     });
     if (!user) {
       setErrorSignUpForm("email", {

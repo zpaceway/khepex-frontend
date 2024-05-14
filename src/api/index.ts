@@ -62,13 +62,30 @@ export const signUpUser = async (
   };
 };
 
+const shuffleItems = <T>(array: T[]) => {
+  let currentIndex = array.length;
+
+  while (currentIndex != 0) {
+    const randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+};
+
 export const getMoviesSortedByRelevance = async (
   filters: Partial<TMovie> = {},
 ) => {
   await delay(1000);
-  return movies.filter((movie) => {
+  const filteredMovies = movies.filter((movie) => {
     return Object.entries(filters).every(([key, value]) => {
       return movie[key as keyof TMovie] === value;
     });
   });
+
+  shuffleItems(filteredMovies);
+
+  return filteredMovies;
 };

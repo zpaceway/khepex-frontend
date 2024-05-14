@@ -1,6 +1,7 @@
 import { useMovies } from "../hooks";
 import { FaPlay } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 import LoadingPage from "./LoadingPage";
 
@@ -39,17 +40,23 @@ const DashboardPage = () => {
           className="absolute inset-0 h-full w-full object-cover object-top"
         />
       </div>
-      <div className="p-4">
+      <div className="z-20 -mt-40 flex gap-4 p-4">
         {movies.map((movie) => (
-          <div className="flex w-40 flex-col gap-2 overflow-hidden text-white">
-            <div className="w-full">
+          <div className="flex flex-col gap-2 overflow-hidden text-white">
+            <div className="relative h-60 w-40">
               <img
                 src={movie.cover}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover shadow-md"
                 alt=""
               />
+              <div className="absolute bottom-0 flex h-6 w-full items-center gap-1 bg-black bg-opacity-50 px-2 text-xs backdrop-blur-sm">
+                <div className="text-rose-500">
+                  <FaHeart />
+                </div>
+                <div>{movie.ratings.toFixed(1)}</div>
+              </div>
             </div>
-            <div className="truncate text-sm">{movie.name}</div>
+            <div className="truncate text-sm font-medium">{movie.name}</div>
           </div>
         ))}
       </div>

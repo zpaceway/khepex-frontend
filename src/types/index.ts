@@ -13,6 +13,6 @@ export type TMovie = {
   durationInSeconds: number;
   director: string;
   year: number;
-  genre: string;
+  genres: string[];
   description: string;
 };

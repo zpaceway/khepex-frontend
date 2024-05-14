@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import LoadingScreen from "../components/LoadingScreen";
 import MovieCard from "../components/MovieCard";
 import { toast } from "react-toastify";
+import { IoIosFilm } from "react-icons/io";
 
 const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
   const { movies } = useMovies();
@@ -26,15 +27,16 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="flex w-full items-center justify-center border-b">
-        <div className="w-full max-w-4xl p-4">
-          <h1 className="text-2xl font-bold">
+      <div className="flex w-full items-center justify-center border-b bg-black bg-opacity-10 px-4 text-zinc-800 backdrop-blur-sm">
+        <div className="flex w-full max-w-xl items-center gap-1 p-4">
+          <IoIosFilm />
+          <h1 className="text-lg font-bold">
             {movie.title} ({movie.year})
           </h1>
         </div>
       </div>
       <div className="flex w-full justify-center">
-        <div className="flex w-full max-w-4xl flex-col gap-4 p-4">
+        <div className="flex w-full max-w-xl flex-col gap-4 p-4">
           <div>
             Hi {user.name}, thank you for chosing KHEpex. You are about to{" "}
             <span className="font-bold">{mode}</span> the movie
@@ -49,7 +51,7 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
             </div>
             <div className="max-w-xs text-sm">{movie.sinopsis}</div>
           </div>
-          <div className="mt-16 max-w-xs">
+          <div className="mt-16">
             <h1 className="mb-2 text-2xl font-bold">Summary</h1>
             <div className="flex justify-between">
               <div>
@@ -67,26 +69,36 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
                 ${((price / 100) * 1.12).toFixed(2)}
               </div>
             </div>
-            <button
-              className="mt-4 w-full rounded-md bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
-              onClick={async () => {
-                if (mode === "buy") {
-                  const result = await purchase(movie.id);
-                  if (!result)
-                    return toast.error(
-                      "An error has ocurred, please try again",
-                    );
-                  toast.success("Purchase completed");
-                  return navigate("/");
-                }
-                toast.success(
-                  "Rent completed, you will be redirected to the movie player",
-                );
-                navigate(`/play/${movie.id}`);
-              }}
-            >
-              {mode === "buy" ? "Pay" : "Pay and Watch"}
-            </button>
+            <div className="flex gap-2">
+              <button
+                className="mt-4 w-full rounded-md bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
+                onClick={async () => {
+                  if (mode === "buy") {
+                    const result = await purchase(movie.id);
+                    if (!result)
+                      return toast.error(
+                        "An error has ocurred, please try again",
+                      );
+                    toast.success("Purchase completed");
+                    return navigate("/");
+                  }
+                  toast.success(
+                    "Rent completed, you will be redirected to the movie player",
+                  );
+                  navigate(`/play/${movie.id}`);
+                }}
+              >
+                {mode === "buy" ? "Pay" : "Pay and Watch"}
+              </button>
+              <button
+                className="mt-4 w-full rounded-md bg-zinc-500 px-4 py-2 text-white hover:bg-zinc-600"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </div>

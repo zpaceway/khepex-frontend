@@ -61,6 +61,7 @@ export const signUpUser = async (
   if (userWithSameEmail) return null;
 
   users.push({ ...user, id: userId });
+  localStorage.removeItem("currentUserId");
 
   return {
     id: userId,

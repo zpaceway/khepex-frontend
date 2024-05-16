@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.Fragment>
+  <React.StrictMode>
     <ToastContainer />
     <RouterProvider router={router} />
-  </React.Fragment>,
+  </React.StrictMode>,
 );

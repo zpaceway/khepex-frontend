@@ -33,9 +33,12 @@ const MoviePage = () => {
                 {movie.title}
               </div>
               <div>
+                <span className="text-zinc-400">Year: </span>
+                {movie.year}
+              </div>
+              <div>
                 <span className="text-zinc-400">Duration: </span>
-                {movie.year} {durationFormatted?.hours}h{" "}
-                {durationFormatted?.minutes}m
+                {durationFormatted?.hours}h {durationFormatted?.minutes}m
               </div>
               <div>
                 <span className="text-zinc-400">Genres: </span>

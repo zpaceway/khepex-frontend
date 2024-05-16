@@ -6,9 +6,14 @@ import { FaEye, FaInfoCircle, FaPlay, FaShoppingCart } from "react-icons/fa";
 type MovieActionsProps = {
   isPurchased: boolean;
   movie: TMovie;
+  showMoreInfo?: boolean;
 };
 
-const MovieActions = ({ isPurchased, movie }: MovieActionsProps) => {
+const MovieActions = ({
+  isPurchased,
+  movie,
+  showMoreInfo,
+}: MovieActionsProps) => {
   const navigate = useNavigate();
 
   return (
@@ -38,18 +43,20 @@ const MovieActions = ({ isPurchased, movie }: MovieActionsProps) => {
             </div>
           </div>
         </Button>
-        <Button
-          className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
-          variant="info"
-          onClick={() => {
-            navigate(`/movie/${movie.id}`);
-          }}
-        >
-          <div className="flex items-center gap-2">
-            <FaInfoCircle />
-            <div className="whitespace-nowrap">More Info</div>
-          </div>
-        </Button>
+        {showMoreInfo && (
+          <Button
+            className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
+            variant="info"
+            onClick={() => {
+              navigate(`/movie/${movie.id}`);
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <FaInfoCircle />
+              <div className="whitespace-nowrap">More Info</div>
+            </div>
+          </Button>
+        )}
       </div>
       {!isPurchased && (
         <div className="flex flex-col items-start gap-2">

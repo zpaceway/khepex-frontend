@@ -14,7 +14,7 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
           <div>{movie.title}</div>
         </div>
         <div className="max-w-[400px] text-lg">{movie.description}</div>
-        <MovieActions movie={movie} isPurchased={isPurchased} />
+        <MovieActions movie={movie} isPurchased={isPurchased} showMoreInfo />
         <div className="absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-zinc-900 to-transparent"></div>
       </div>
       <img

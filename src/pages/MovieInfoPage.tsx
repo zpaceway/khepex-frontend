@@ -48,12 +48,12 @@ const MoviePage = () => {
             <MovieActions movie={movie} isPurchased={isPurchased} />
           </div>
         </div>
-        <div className="h-[600px] w-full overflow-hidden p-2">
+        <div className="h-[600px] w-full overflow-hidden">
           <div className="relative h-full w-full">
-            <div className="absolute inset-x-0 top-0 z-50 h-40 bg-gradient-to-b from-zinc-900 to-transparent"></div>
+            <div className="absolute inset-x-0 top-0 z-50 hidden h-40 bg-gradient-to-b from-zinc-900 to-transparent lg:block"></div>
             <div className="absolute inset-x-0 bottom-0 z-50 h-40 bg-gradient-to-t from-zinc-900 to-transparent"></div>
-            <div className="absolute inset-y-0 left-0 z-50 w-40 bg-gradient-to-r from-zinc-900 to-transparent"></div>
-            <div className="absolute inset-y-0 right-0 z-50 w-40 bg-gradient-to-l from-zinc-900 to-transparent"></div>
+            <div className="absolute inset-y-0 left-0 z-50 hidden w-40 bg-gradient-to-r from-zinc-900 to-transparent lg:block"></div>
+            <div className="absolute inset-y-0 right-0 z-50 hidden w-40 bg-gradient-to-l from-zinc-900 to-transparent lg:block"></div>
             <div className="absolute inset-0">
               <img
                 src={movie.banner}

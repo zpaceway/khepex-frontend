@@ -8,6 +8,7 @@ import { useUser } from "../hooks";
 import { toast } from "react-toastify";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import TextLogo from "../components/TextLogo";
 
 const signUpFormSchema = z.object({
   name: z.string().min(1),
@@ -108,11 +109,7 @@ const AuthPage = () => {
         }
       >
         <h1 className="z-10 text-2xl font-bold">
-          Welcome to{" "}
-          <span className="text-3xl font-black text-purple-400">
-            <span>KHE</span>
-            <span className="text-lg font-medium text-white">pex</span>
-          </span>
+          Welcome to <TextLogo />
         </h1>
         <div className="z-10 flex flex-col gap-2">
           {isNewUser && (

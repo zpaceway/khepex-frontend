@@ -4,6 +4,7 @@ import { TUser } from "../types";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TextLogo from "./TextLogo";
 
 type NavBarProps = {
   isWindowOnTop?: boolean;
@@ -30,15 +31,11 @@ const NavBar = ({
           : "border-opacity-20 bg-opacity-80",
       )}
     >
-      <button
+      <TextLogo
         onClick={() => {
           navigate("/");
         }}
-        className="text-3xl font-black text-purple-400"
-      >
-        <span>KHE</span>
-        <span className="text-lg font-medium text-white">pex</span>
-      </button>
+      />
       <div className="flex items-center gap-4 text-white">
         {onSearchChange && (
           <div className="relative text-sm text-zinc-600">

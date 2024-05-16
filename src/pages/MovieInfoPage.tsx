@@ -37,6 +37,10 @@ const MoviePage = () => {
                 {movie.year}
               </div>
               <div>
+                <span className="text-zinc-400">Rating: </span>
+                {movie.ratings.toFixed(1)} / 10
+              </div>
+              <div>
                 <span className="text-zinc-400">Duration: </span>
                 {durationFormatted?.hours}h {durationFormatted?.minutes}m
               </div>

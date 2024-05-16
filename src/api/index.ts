@@ -51,20 +51,20 @@ export const signUpUser = async (
   };
 };
 
-export const getMoviesSortedByRelevance = async () => {
+export const getMovieById = async (movieId: string): Promise<TMovie | null> => {
   const movies = await _getMovies();
-  return movies;
+  const movie = movies.find((movie) => movie.id === movieId);
+  return movie || null;
 };
 
-export const generateLolomoFromMovies = async ({
-  movies,
+export const generateLolomo = async ({
   user,
   search,
 }: {
-  movies: TMovie[];
   user: TUser;
   search?: string;
 }): Promise<TLolomo> => {
+  const movies = await _getMovies();
   const filteredMovies = movies.filter((movie) => {
     const isMovieOnSearch =
       !search ||

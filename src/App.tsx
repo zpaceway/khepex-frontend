@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useUser, useMovies } from "./hooks";
+import { useUser } from "./hooks";
 import { useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -9,7 +9,6 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useUser();
-  useMovies();
 
   useEffect(() => {
     if (user !== null || unprotectedRoutes.includes(location.pathname)) return;

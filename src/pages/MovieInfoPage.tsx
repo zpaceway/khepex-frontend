@@ -1,19 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useMovies } from "../hooks";
-import { useMemo } from "react";
+import { useMovie } from "../hooks";
 import LoadingScreen from "../components/LoadingScreen";
+import NotFoundPage from "./NotFoundPage";
 
 const MoviePage = () => {
-  const { movies } = useMovies();
   const params = useParams<{ movieId: string }>();
+  const movie = useMovie(params.movieId);
 
-  const movie = useMemo(() => {
-    if (!movies) return;
-
-    return movies.find((movie) => movie.id === params.movieId);
-  }, [movies, params.movieId]);
-
-  if (!movie) return <LoadingScreen />;
+  if (movie === undefined) return <LoadingScreen />;
+  if (movie === null) return <NotFoundPage />;
 
   return <div>info from {movie.title}</div>;
 };

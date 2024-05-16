@@ -6,9 +6,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type NavBarProps = {
-  isWindowOnTop: boolean;
-  search: string;
-  onSearchChange: (newSearch: string) => void;
+  isWindowOnTop?: boolean;
+  search?: string;
+  onSearchChange?: (newSearch: string) => void;
   user: TUser;
 };
 
@@ -30,21 +30,28 @@ const NavBar = ({
           : "border-opacity-20 bg-opacity-80",
       )}
     >
-      <div className="text-3xl font-black text-purple-400">
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+        className="text-3xl font-black text-purple-400"
+      >
         <span>KHE</span>
         <span className="text-lg font-medium text-white">pex</span>
-      </div>
+      </button>
       <div className="flex items-center gap-4 text-white">
-        <div className="relative text-sm text-zinc-600">
-          <FaSearch className="absolute left-2 top-2.5" />
-          <input
-            type="text"
-            className="w-40 min-w-0 rounded-md p-2 pl-8 outline-none"
-            placeholder="Title or genre"
-            value={search}
-            onChange={(e) => onSearchChange(e.target.value)}
-          />
-        </div>
+        {onSearchChange && (
+          <div className="relative text-sm text-zinc-600">
+            <FaSearch className="absolute left-2 top-2.5" />
+            <input
+              type="text"
+              className="w-40 min-w-0 rounded-md p-2 pl-8 outline-none"
+              placeholder="Title or genre"
+              value={search}
+              onChange={(e) => onSearchChange(e.target.value)}
+            />
+          </div>
+        )}
         <div className="relative h-10 w-10">
           <img
             src={user.picture || "/images/users/default.jpg"}

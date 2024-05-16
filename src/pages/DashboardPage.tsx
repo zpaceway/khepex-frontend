@@ -1,4 +1,4 @@
-import { useUser, useMovies } from "../hooks";
+import { useUser, useLolomo } from "../hooks";
 
 import LoadingScreen from "../components/LoadingScreen";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -9,7 +9,7 @@ import LolomoSection from "../components/Lolomo";
 import { FOR_YOU_CATEGORY } from "../constants";
 
 const DashboardPage = () => {
-  const { lolomo, refreshLolomo } = useMovies();
+  const { lolomo, refreshLolomo } = useLolomo();
   const { user } = useUser();
   const appContainerRef = useRef<HTMLDivElement>(null);
   const [isWindowOnTop, setIsWindowOnTop] = useState(true);
@@ -71,8 +71,8 @@ const DashboardPage = () => {
         user={user}
       />
       {!bannerMovie ? (
-        <div className="flex h-screen w-full items-center justify-center px-4 text-6xl text-white lg:px-8">
-          No results were found
+        <div className="flex h-screen w-full items-center justify-center px-4 text-4xl font-medium text-white lg:px-8">
+          No results were found...
         </div>
       ) : (
         <div className="flex flex-col">

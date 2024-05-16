@@ -1,15 +1,15 @@
 import { useAtom } from "jotai";
-import { moviesAtom, userAtom } from "../atoms";
+import { lolomoAtom, userAtom } from "../atoms";
 import { useCallback, useEffect, useState } from "react";
 import {
-  generateLolomoFromMovies,
+  generateLolomo as generateLolomo,
   getCurrentUser,
-  getMoviesSortedByRelevance,
+  getMovieById,
   purchaseMovieById,
   signInWithEmailAndPassword,
   signUpUser,
 } from "../api";
-import { TLolomo, TUser } from "../types";
+import { TMovie, TUser } from "../types";
 
 export const useUser = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -68,17 +68,16 @@ export const useUser = () => {
   };
 };
 
-export const useMovies = () => {
-  const [movies, setMovies] = useAtom(moviesAtom);
+export const useLolomo = () => {
   const [user] = useAtom(userAtom);
-  const [lolomo, setLolomo] = useState<TLolomo | undefined>();
+  const [lolomo, setLolomo] = useAtom(lolomoAtom);
 
   const fetchLolomo = useCallback(
     async (search?: string) => {
-      if (!movies || !user) return;
-      return generateLolomoFromMovies({ movies, user, search });
+      if (!user) return;
+      return generateLolomo({ user, search });
     },
-    [movies, user],
+    [user],
   );
 
   const refreshLolomo = useCallback(
@@ -87,30 +86,29 @@ export const useMovies = () => {
         setLolomo(lolomo);
       });
     },
-    [fetchLolomo],
+    [fetchLolomo, setLolomo],
   );
 
-  useEffect(() => {
-    if (!movies || lolomo) return undefined;
-    fetchLolomo()
-      .then((lolomo) => setLolomo(lolomo))
-      .catch(console.error);
-  }, [fetchLolomo, lolomo, movies]);
+  return { lolomo, refreshLolomo };
+};
+
+export const useMovie = (movieId?: string) => {
+  const [movie, setMovie] = useState<TMovie | null | undefined>();
 
   useEffect(() => {
+    if (!movieId) return;
     let mounted = true;
-    const handler = async () => {
-      if (movies === undefined && mounted) {
-        const currentMovies = await getMoviesSortedByRelevance();
-        setMovies(currentMovies);
+
+    getMovieById(movieId).then((movie) => {
+      if (mounted) {
+        setMovie(movie);
       }
-    };
-    handler().catch(console.error);
+    });
 
     return () => {
       mounted = false;
     };
-  }, [movies, setMovies]);
+  }, [movieId]);
 
-  return { movies, lolomo, refreshLolomo };
+  return movie;
 };

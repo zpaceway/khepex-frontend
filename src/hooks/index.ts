@@ -70,14 +70,15 @@ export const useUser = () => {
 
 export const useMovies = () => {
   const [movies, setMovies] = useAtom(moviesAtom);
+  const [user] = useAtom(userAtom);
   const [lolomo, setLolomo] = useState<[string, TMovie[]][] | undefined>();
 
   const fetchLolomo = useCallback(
     async (search?: string) => {
-      if (!movies) return;
-      return generateLolomoFromMovies({ movies, search });
+      if (!movies || !user) return;
+      return generateLolomoFromMovies({ movies, user, search });
     },
-    [movies],
+    [movies, user],
   );
 
   const refreshLolomo = useCallback(

@@ -1,6 +1,9 @@
 import { FaSearch } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 import { TUser } from "../types";
+import { FaSignOutAlt } from "react-icons/fa";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type NavBarProps = {
   isWindowOnTop: boolean;
@@ -15,6 +18,9 @@ const NavBar = ({
   onSearchChange,
   user,
 }: NavBarProps) => {
+  const [isUserDropdownOpened, setIsUserDropdownOpened] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <div
       className={twMerge(
@@ -39,12 +45,30 @@ const NavBar = ({
             onChange={(e) => onSearchChange(e.target.value)}
           />
         </div>
-        <div className="h-10 w-10">
+        <div className="relative h-10 w-10">
           <img
             src={user.picture || "/users/default.jpg"}
-            className="h-full w-full rounded-full object-cover"
+            className="h-full w-full cursor-pointer rounded-full object-cover"
             alt=""
+            onClick={() => {
+              setIsUserDropdownOpened((state) => !state);
+            }}
           />
+          {isUserDropdownOpened && (
+            <div className="absolute right-0 top-[calc(100%_+_8px)] w-40 rounded-md border bg-white text-zinc-500">
+              <button
+                className="flex items-center gap-4 px-4 py-2"
+                onClick={() => {
+                  localStorage.removeItem("currentUserId");
+                  navigate("/auth");
+                  setIsUserDropdownOpened(false);
+                }}
+              >
+                <div>Sign out</div>
+                <FaSignOutAlt />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

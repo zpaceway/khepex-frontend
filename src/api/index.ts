@@ -1,3 +1,4 @@
+import { FOR_YOU_CATEGORY, YOUR_MOVIES_CATEGORY } from "../constants";
 import { TMovie, TUser } from "../types";
 import {
   _getMovies,
@@ -57,9 +58,11 @@ export const getMoviesSortedByRelevance = async () => {
 
 export const generateLolomoFromMovies = async ({
   movies,
+  user,
   search,
 }: {
   movies: TMovie[];
+  user: TUser;
   search?: string;
 }): Promise<[string, TMovie[]][]> => {
   const filteredMovies = movies.filter((movie) => {
@@ -83,14 +86,22 @@ export const generateLolomoFromMovies = async ({
     ...new Set(filteredMovies.map((movie) => movie.genres).flat()),
   ].sort();
 
-  return ["", ...categories].map((category) => {
+  const extraLists = [FOR_YOU_CATEGORY, YOUR_MOVIES_CATEGORY];
+
+  return [...extraLists, ...categories].map((category) => {
     return [
-      category || "For You",
+      category,
       filteredMovies.filter((movie) => {
-        const isForYou = !category;
-        if (isForYou) return true;
+        const isForYouCategory = category === FOR_YOU_CATEGORY;
+        if (isForYouCategory) return true;
+
+        const isYourMoviesCategory = category === YOUR_MOVIES_CATEGORY;
+        if (isYourMoviesCategory)
+          return user.purchasedMovieIds.includes(movie.id);
+
         const doesGenreIncludes = movie.genres.includes(category);
         if (doesGenreIncludes) return true;
+
         return false;
       }),
     ];

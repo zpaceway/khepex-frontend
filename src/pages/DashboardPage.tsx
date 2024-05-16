@@ -31,6 +31,10 @@ const DashboardPage = () => {
     if (!newBannerMovie) return lolomo?.[0]?.[1]?.[0];
     return newBannerMovie;
   }, [lolomo, bannerMovieId]);
+  const isBannerMoviePurchased = useMemo(() => {
+    if (!bannerMovie || !user) return false;
+    return user.purchasedMovieIds.includes(bannerMovie.id);
+  }, [bannerMovie, user]);
 
   useEffect(() => {
     if (!lolomo || bannerMovieId) return;
@@ -72,7 +76,7 @@ const DashboardPage = () => {
         user={user}
       />
       {!bannerMovie ? (
-        <div className="flex h-screen w-full items-center justify-center text-6xl text-white">
+        <div className="flex h-screen w-full items-center justify-center px-4 text-6xl text-white lg:px-8">
           No results were found
         </div>
       ) : (
@@ -81,7 +85,7 @@ const DashboardPage = () => {
             <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 bg-black bg-opacity-20 px-4 text-white lg:px-8">
               <div className="flex max-w-[400px] gap-2 text-4xl font-bold">
                 <div>{bannerMovie.title}</div>
-                {!user.purchasedMovieIds.includes(bannerMovie.id) && (
+                {!isBannerMoviePurchased && (
                   <div className="flex flex-col">
                     <button
                       className="flex items-center justify-center gap-2 rounded-md bg-emerald-500 bg-opacity-60 px-4 py-2 text-sm transition-all hover:bg-opacity-80"
@@ -105,26 +109,24 @@ const DashboardPage = () => {
                 <button
                   className={twMerge(
                     "flex w-32 items-center justify-center gap-2 rounded-md bg-zinc-700 bg-opacity-60 px-4 py-2 transition-all hover:bg-opacity-80",
-                    user.purchasedMovieIds.includes(bannerMovie.id)
-                      ? "bg-purple-500"
-                      : "bg-emerald-500",
+                    isBannerMoviePurchased ? "bg-purple-500" : "bg-emerald-500",
                   )}
                   onClick={() => {
-                    if (user.purchasedMovieIds.includes(bannerMovie.id)) {
+                    if (isBannerMoviePurchased) {
                       return navigate(`/play/${bannerMovie.id}`);
                     }
                     navigate(`/buy/${bannerMovie.id}`);
                   }}
                 >
                   <div className="flex items-center gap-1">
-                    {user.purchasedMovieIds.includes(bannerMovie.id) ? (
+                    {isBannerMoviePurchased ? (
                       <FaPlay className="shrink-0" />
                     ) : (
                       <FaShoppingCart className="shrink-0" />
                     )}
 
                     <div className="">
-                      {user.purchasedMovieIds.includes(bannerMovie.id)
+                      {isBannerMoviePurchased
                         ? "Play"
                         : (bannerMovie.purchasePriceInCents / 100).toFixed(2)}
                     </div>

@@ -27,7 +27,7 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="flex w-full items-center justify-center border-b bg-black bg-opacity-10 px-4 text-zinc-800 backdrop-blur-sm">
+      <div className="fixed z-50 flex w-full items-center justify-center border-b bg-zinc-200 px-4 text-zinc-800 backdrop-blur-sm">
         <div className="flex w-full max-w-xl items-center gap-1 p-4">
           <IoIosFilm />
           <h1 className="text-lg font-bold">
@@ -35,7 +35,7 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
           </h1>
         </div>
       </div>
-      <div className="flex w-full justify-center">
+      <div className="flex w-full justify-center pt-16">
         <div className="flex w-full max-w-xl flex-col gap-4 p-4">
           <div>
             Hi {user.name}, thank you for chosing KHEpex. You are about to{" "}

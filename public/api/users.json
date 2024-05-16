@@ -3,7 +3,7 @@
     "id": "1",
     "email": "test@test.com",
     "name": "Alexandro Tapia",
-    "picture": "/users/test@test.com/picture.png",
+    "picture": "/images/users/test@test.com/picture.png",
     "password": "123456",
     "purchasedMovieIds": ["1", "4", "3", "10", "13", "16", "20", "5", "2", "7"]
   }

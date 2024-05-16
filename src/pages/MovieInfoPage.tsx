@@ -29,6 +29,10 @@ const MoviePage = () => {
           <div className="flex w-full max-w-lg flex-col gap-4 p-4 text-white">
             <div className="flex flex-col">
               <div>
+                <span className="text-zinc-400">Title: </span>
+                {movie.title}
+              </div>
+              <div>
                 <span className="text-zinc-400">Duration: </span>
                 {movie.year} {durationFormatted?.hours}h{" "}
                 {durationFormatted?.minutes}m
@@ -42,7 +46,7 @@ const MoviePage = () => {
                 <span>{movie.director}</span>
               </div>
             </div>
-            <div className="text-lg font-medium">{movie.sinopsis}</div>
+            <div className="text-lg">{movie.sinopsis}</div>
             <MovieActions movie={movie} isPurchased={isPurchased} />
           </div>
         </div>

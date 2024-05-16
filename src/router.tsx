@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import MoviePlayerPage from "./pages/MoviePlayerPage";
 import MovieInfoPage from "./pages/MovieInfoPage";
 import MovieShoppingPage from "./pages/MovieShoppingPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "rent/:movieId",
         element: <MovieShoppingPage mode="rent" />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },

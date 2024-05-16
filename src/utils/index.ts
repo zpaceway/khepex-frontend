@@ -1,11 +1,3 @@
-export const delay = (timeout: number) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(null);
-    }, timeout);
-  });
-};
-
 export const shuffleItems = <T>(array: T[]) => {
   let currentIndex = array.length;
 

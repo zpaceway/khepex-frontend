@@ -46,13 +46,18 @@ export const useUser = () => {
   );
 
   useEffect(() => {
+    let mounted = true;
     const handler = async () => {
-      if (user === undefined) {
+      if (user === undefined && mounted) {
         const currentUser = await getCurrentUser();
         setUser(currentUser);
       }
     };
-    handler();
+    handler().catch(console.error);
+
+    return () => {
+      mounted = false;
+    };
   }, [setUser, user]);
 
   return {
@@ -86,18 +91,24 @@ export const useMovies = () => {
 
   useEffect(() => {
     if (!movies || lolomo) return undefined;
-    fetchLolomo().then((lolomo) => setLolomo(lolomo));
+    fetchLolomo()
+      .then((lolomo) => setLolomo(lolomo))
+      .catch(console.error);
   }, [fetchLolomo, lolomo, movies]);
 
   useEffect(() => {
-    const moviesHandler = async () => {
-      if (movies === undefined) {
+    let mounted = true;
+    const handler = async () => {
+      if (movies === undefined && mounted) {
         const currentMovies = await getMoviesSortedByRelevance();
         setMovies(currentMovies);
       }
     };
+    handler().catch(console.error);
 
-    moviesHandler();
+    return () => {
+      mounted = false;
+    };
   }, [movies, setMovies]);
 
   return { movies, lolomo, refreshLolomo };

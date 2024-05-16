@@ -1,41 +1,25 @@
-import { movies, users } from "../__mock__";
 import { TMovie, TUser } from "../types";
-import { delay, shuffleItems } from "../utils";
-
-const MOCKED_BACKEND_TIMEOUT_IN_MS = 200;
+import {
+  _getMovies,
+  _getUserByEmailAndPassword,
+  _getUserById,
+  _signUpUserWithEmailAndPassword,
+} from "./__mock__";
 
 export const getCurrentUser = async (): Promise<TUser | null> => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
   const currentUserId = localStorage.getItem("currentUserId");
-  if (currentUserId) {
-    const user = users.find((user) => user.id === currentUserId);
-    if (user) {
-      return {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        picture: user.picture,
-        purchasedMovieIds: user.purchasedMovieIds,
-      };
-    }
-
-    return null;
-  }
-  return null;
+  if (!currentUserId) return null;
+  return _getUserById(currentUserId);
 };
 
 export const signInWithEmailAndPassword = async (
   email: string,
   password: string,
 ): Promise<TUser | null> => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
-  const user = users.find((user) => {
-    return user.email === email && user.password === password;
-  });
+  const user = await _getUserByEmailAndPassword(email, password);
 
   if (user) {
     localStorage.setItem("currentUserId", user.id);
-
     return {
       id: user.id,
       email: user.email,
@@ -51,16 +35,13 @@ export const signInWithEmailAndPassword = async (
 export const signUpUser = async (
   user: Omit<TUser & { password: string }, "id">,
 ): Promise<TUser | null> => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
-  const userId = crypto.randomUUID() as string;
+  const userId = await _signUpUserWithEmailAndPassword(
+    user.email,
+    user.password,
+  );
 
-  const userWithSameEmail = users.find((_user) => {
-    return _user.email === user.email;
-  });
+  if (!userId) return null;
 
-  if (userWithSameEmail) return null;
-
-  users.push({ ...user, id: userId });
   localStorage.removeItem("currentUserId");
 
   return {
@@ -70,12 +51,8 @@ export const signUpUser = async (
 };
 
 export const getMoviesSortedByRelevance = async () => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
-  const moviesSortedByRelevance = [...movies];
-
-  shuffleItems(moviesSortedByRelevance);
-
-  return moviesSortedByRelevance;
+  const movies = await _getMovies();
+  return movies;
 };
 
 export const generateLolomoFromMovies = async ({
@@ -85,8 +62,6 @@ export const generateLolomoFromMovies = async ({
   movies: TMovie[];
   search?: string;
 }): Promise<[string, TMovie[]][]> => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
-
   const filteredMovies = movies.filter((movie) => {
     const isMovieOnSearch =
       !search ||
@@ -123,8 +98,10 @@ export const generateLolomoFromMovies = async ({
 };
 
 export const purchaseMovieById = async (movieId: string) => {
-  await delay(MOCKED_BACKEND_TIMEOUT_IN_MS);
-  if (!movieId) return false;
+  const movies = await _getMovies();
+  const movie = movies.find((movie) => movie.id === movieId);
+
+  if (!movie) return false;
 
   return true;
 };

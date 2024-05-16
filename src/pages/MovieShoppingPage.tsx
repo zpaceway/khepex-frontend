@@ -47,7 +47,7 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
           </div>
           <div className="flex gap-4 border p-4">
             <div className="w-40 shrink-0">
-              <MovieCard movie={movie} purchased={false} mode="rent" />
+              <MovieCard movie={movie} purchased={false} mode={mode} />
             </div>
             <div className="max-w-xs text-sm">{movie.sinopsis}</div>
           </div>

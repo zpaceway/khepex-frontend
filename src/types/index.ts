@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { signInFormSchema, signUpFormSchema } from "../schemas";
+
 export type TUser = {
   id: string;
   name: string;
@@ -24,3 +27,6 @@ export type TMovie = {
 };
 
 export type TLolomo = [string, TMovie[]][];
+
+export type SignUpFormSchemaType = z.infer<typeof signUpFormSchema>;
+export type SignInFormSchemaType = z.infer<typeof signInFormSchema>;

@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   signUpUser,
 } from "../api";
-import { TMovie, TUser } from "../types";
+import { TLolomo, TUser } from "../types";
 
 export const useUser = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -71,7 +71,7 @@ export const useUser = () => {
 export const useMovies = () => {
   const [movies, setMovies] = useAtom(moviesAtom);
   const [user] = useAtom(userAtom);
-  const [lolomo, setLolomo] = useState<[string, TMovie[]][] | undefined>();
+  const [lolomo, setLolomo] = useState<TLolomo | undefined>();
 
   const fetchLolomo = useCallback(
     async (search?: string) => {

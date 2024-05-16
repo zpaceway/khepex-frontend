@@ -5,6 +5,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import MovieCard from "../components/MovieCard";
 import { toast } from "react-toastify";
 import { IoIosFilm } from "react-icons/io";
+import Button from "../components/Button";
 
 const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
   const { movies } = useMovies();
@@ -70,8 +71,9 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
               </div>
             </div>
             <div className="flex gap-2">
-              <button
-                className="mt-4 w-full rounded-md bg-purple-500 px-4 py-2 text-white hover:bg-purple-600"
+              <Button
+                className="bg-opacity-80 hover:bg-opacity-100"
+                variant="primary"
                 onClick={async () => {
                   if (mode === "buy") {
                     const result = await purchase(movie.id);
@@ -89,15 +91,16 @@ const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
                 }}
               >
                 {mode === "buy" ? "Pay" : "Pay and Watch"}
-              </button>
-              <button
-                className="mt-4 w-full rounded-md bg-zinc-500 px-4 py-2 text-white hover:bg-zinc-600"
+              </Button>
+              <Button
+                className="bg-opacity-80 hover:bg-opacity-100"
+                variant="info"
                 onClick={() => {
                   navigate("/");
                 }}
               >
                 Cancel
-              </button>
+              </Button>
             </div>
           </div>
         </div>

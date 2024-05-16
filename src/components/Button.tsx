@@ -10,8 +10,8 @@ type ButtonProps = {
 
 const variantClassNameMapping: Record<ButtonVariant, string> = {
   primary: "border-purple-400 border-opacity-50 bg-purple-500",
-  secondary: "border-purple-400 border-opacity-50 bg-purple-500",
-  info: "border-purple-400 border-opacity-50 bg-purple-500",
+  secondary: "border-emerald-400 border-opacity-50 bg-emerald-500",
+  info: "border-zinc-400 border-opacity-50 bg-zinc-500",
 };
 
 const Button = ({
@@ -26,7 +26,7 @@ const Button = ({
     <button
       disabled={disabled || isLoading}
       className={twMerge(
-        "relative flex h-10 w-full items-center justify-center rounded-md border px-4 py-2 text-sm",
+        "relative flex h-10 w-full items-center justify-center rounded-md border px-4 py-2 text-sm text-white transition-all",
         variantClassNameMapping[variant],
         className,
       )}

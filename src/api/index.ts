@@ -1,5 +1,5 @@
 import { FOR_YOU_CATEGORY, YOUR_MOVIES_CATEGORY } from "../constants";
-import { TMovie, TUser } from "../types";
+import { TLolomo, TMovie, TUser } from "../types";
 import {
   _getMovies,
   _getUserByEmailAndPassword,
@@ -64,7 +64,7 @@ export const generateLolomoFromMovies = async ({
   movies: TMovie[];
   user: TUser;
   search?: string;
-}): Promise<[string, TMovie[]][]> => {
+}): Promise<TLolomo> => {
   const filteredMovies = movies.filter((movie) => {
     const isMovieOnSearch =
       !search ||

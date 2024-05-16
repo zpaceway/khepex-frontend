@@ -22,3 +22,5 @@ export type TMovie = {
   rentPriceInCents: number;
   trailer: string;
 };
+
+export type TLolomo = [string, TMovie[]][];

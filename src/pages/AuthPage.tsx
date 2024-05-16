@@ -124,7 +124,6 @@ const AuthPage = () => {
           )}
           <TextField
             placeholder="Email"
-            type="email"
             {...(isNewUser
               ? registerSignUpForm("email")
               : registerSignInForm("email"))}

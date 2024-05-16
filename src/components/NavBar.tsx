@@ -47,7 +47,7 @@ const NavBar = ({
         </div>
         <div className="relative h-10 w-10">
           <img
-            src={user.picture || "/users/default.jpg"}
+            src={user.picture || "/images/users/default.jpg"}
             className="h-full w-full cursor-pointer rounded-full object-cover"
             alt=""
             onClick={() => {

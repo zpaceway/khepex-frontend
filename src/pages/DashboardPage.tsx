@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Debouncer } from "../utils";
 import NavBar from "../components/NavBar";
 import MovieBanner from "../components/MovieBanner";
-import LolomoSection from "../components/Lolomo";
+import LolomoSection from "../components/LolomoSection";
 import { FOR_YOU_CATEGORY } from "../constants";
 
 const DashboardPage = () => {

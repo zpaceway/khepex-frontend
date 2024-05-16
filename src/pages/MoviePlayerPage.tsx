@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useMovie, useUser } from "../hooks";
-import LoadingScreen from "../components/LoadingScreen";
 import ReactPlayer from "react-player";
 import NotFoundPage from "./NotFoundPage";
-import NavBar from "../components/NavBar";
+import { LoadingScreen, NavBar } from "../components";
 
 const MoviePlayerPage = () => {
   const { user } = useUser();

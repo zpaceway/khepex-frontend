@@ -1,13 +1,15 @@
 import { useUser, useLolomo } from "../hooks";
 
-import LoadingScreen from "../components/LoadingScreen";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Debouncer } from "../utils";
-import NavBar from "../components/NavBar";
-import MovieBanner from "../components/MovieBanner";
-import LolomoSection from "../components/LolomoSection";
 import { FOR_YOU_CATEGORY } from "../constants";
 import { useNavigate } from "react-router-dom";
+import {
+  LoadingScreen,
+  LolomoSection,
+  MovieBanner,
+  NavBar,
+} from "../components";
 
 const DashboardPage = () => {
   const navigate = useNavigate();

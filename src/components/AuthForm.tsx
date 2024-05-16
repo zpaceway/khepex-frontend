@@ -1,9 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
-import TextField from "../components/TextField";
 import { toast } from "react-toastify";
-import Button from "../components/Button";
-import TextLogo from "../components/TextLogo";
 import useAuth from "../hooks/useAuth";
+import { Button, TextField, TextLogo } from ".";
 
 const AuthForm = () => {
   const {

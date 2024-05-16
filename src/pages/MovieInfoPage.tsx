@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useMovie, useUser } from "../hooks";
-import LoadingScreen from "../components/LoadingScreen";
 import NotFoundPage from "./NotFoundPage";
 import { useMemo } from "react";
 import { secondsToHoursMinutesAndSeconds } from "../utils";
-import NavBar from "../components/NavBar";
-import MovieActions from "../components/MovieActions";
+import { LoadingScreen, MovieActions, NavBar } from "../components";
 
 const MoviePage = () => {
   const params = useParams<{ movieId: string }>();

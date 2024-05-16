@@ -1,5 +1,4 @@
-import { atom } from "jotai";
-import { TLolomo, TUser } from "../types";
+import { lolomoAtom } from "./lolomoAtom";
+import { userAtom } from "./userAtom";
 
-export const userAtom = atom<undefined | null | TUser>(undefined);
-export const lolomoAtom = atom<undefined | TLolomo>(undefined);
+export { lolomoAtom, userAtom };

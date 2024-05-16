@@ -1,12 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser, useMovie } from "../hooks";
 import { useMemo } from "react";
-import LoadingScreen from "../components/LoadingScreen";
-import MovieCard from "../components/MovieCard";
 import { toast } from "react-toastify";
 import { IoIosFilm } from "react-icons/io";
-import Button from "../components/Button";
 import NotFoundPage from "./NotFoundPage";
+import { Button, LoadingScreen, MovieCard } from "../components";
 
 const MovieShoppingPage = ({ mode }: { mode: "rent" | "buy" }) => {
   const { user, purchase } = useUser();

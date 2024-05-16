@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "./hooks";
 import { useEffect } from "react";
-import LoadingScreen from "./components/LoadingScreen";
+import { LoadingScreen } from "./components";
 
 const unprotectedRoutes = ["/auth"];
 

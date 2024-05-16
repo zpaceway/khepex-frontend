@@ -6,6 +6,7 @@ import { Debouncer } from "../utils";
 import NavBar from "../components/NavBar";
 import MovieBanner from "../components/MovieBanner";
 import LolomoSection from "../components/Lolomo";
+import { FOR_YOU_CATEGORY } from "../constants";
 
 const DashboardPage = () => {
   const { lolomo, refreshLolomo } = useMovies();
@@ -80,7 +81,10 @@ const DashboardPage = () => {
             isPurchased={isBannerMoviePurchased}
           />
           <LolomoSection
-            lolomo={lolomo}
+            lolomo={lolomo.filter(
+              ([category, movies]) =>
+                movies.length > 0 && (category !== FOR_YOU_CATEGORY || !search),
+            )}
             user={user}
             onMovieClick={(movieId) => {
               setBannerMovieId(movieId);

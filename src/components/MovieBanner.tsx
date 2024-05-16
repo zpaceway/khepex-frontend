@@ -20,7 +20,7 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
         <div className="max-w-[400px] text-lg">{movie.description}</div>
         <div className="flex gap-2">
           <Button
-            className="bg-opacity-60 hover:bg-opacity-80"
+            className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
             variant={isPurchased ? "primary" : "secondary"}
             onClick={() => {
               if (isPurchased) {
@@ -44,7 +44,7 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
             </div>
           </Button>
           <Button
-            className="bg-opacity-60 hover:bg-opacity-80"
+            className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
             variant="info"
             onClick={() => {
               navigate(`/movie/${movie.id}`);
@@ -61,7 +61,7 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
           {!isPurchased && (
             <div className="flex flex-col">
               <Button
-                className="bg-opacity-60 hover:bg-opacity-80"
+                className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
                 variant="secondary"
                 onClick={() => {
                   navigate(`/rent/${movie.id}`);

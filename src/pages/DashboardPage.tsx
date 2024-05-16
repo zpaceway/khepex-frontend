@@ -7,8 +7,10 @@ import NavBar from "../components/NavBar";
 import MovieBanner from "../components/MovieBanner";
 import LolomoSection from "../components/LolomoSection";
 import { FOR_YOU_CATEGORY } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
   const { lolomo, refreshLolomo } = useLolomo();
   const { user } = useUser();
   const appContainerRef = useRef<HTMLDivElement>(null);
@@ -87,8 +89,7 @@ const DashboardPage = () => {
             )}
             user={user}
             onMovieClick={(movieId) => {
-              setBannerMovieId(movieId);
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              navigate(`movie/${movieId}`);
             }}
           />
         </div>

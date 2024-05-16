@@ -56,9 +56,9 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
             </div>
           </Button>
         </div>
-        <div className="flex flex-col items-start gap-2">
-          <div>Watch this movie just once?</div>
-          {!isPurchased && (
+        {!isPurchased && (
+          <div className="flex flex-col items-start gap-2">
+            <div>Watch this movie just once?</div>
             <div className="flex flex-col">
               <Button
                 className="bg-opacity-70 backdrop-blur-sm hover:bg-opacity-90"
@@ -73,8 +73,8 @@ const MovieBanner = ({ movie, isPurchased }: MovieBannerProps) => {
                 </div>
               </Button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
         <div className="absolute inset-x-0 bottom-0 z-10 h-8 bg-gradient-to-t from-zinc-900 to-transparent"></div>
       </div>
       <img

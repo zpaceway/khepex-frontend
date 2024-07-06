@@ -64,7 +64,7 @@ export const generateLolomo = async ({
   user: TUser;
   search?: string;
 }): Promise<TLolomo> => {
-  const movies = await _getMovies();
+  const movies = await _getMovies(search);
   const filteredMovies = movies.filter((movie) => {
     const isMovieOnSearch =
       !search ||

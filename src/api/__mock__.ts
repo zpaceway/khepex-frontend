@@ -5,8 +5,10 @@ export const _getUsers = async () => {
   const response = await fetch("/api/users.json");
   return (await response.json()) as (TUser & { password: string })[];
 };
-export const _getMovies = async () => {
-  const response = await fetch("/api/movies.json");
+export const _getMovies = async (search: string = "") => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_API_URL}/api/catalog/movies?q=${search}`,
+  );
   const movies = (await response.json()) as TMovie[];
   shuffleItems(movies);
   return movies;
